@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIỂM TRA TỔNG ÔN KIẾN THỨC - TRƯỜNG LIÊN CẤP JESTIER</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#0b1d3a',
+                            800: '#142850',
+                            700: '#1e3a8a',
+                            600: '#2563eb',
+                            100: '#e0e7ff',
+                        },
+                        gold: {
+                            400: '#facc15',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Segoe UI', 'Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- MathJax for rendering fraction formulas -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #0b1d3a;
+            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: radial-gradient(#1e3a8a 0.75px, transparent 0.75px);
+            background-size: 24px 24px;
+        }
+        .glass-card {
+            background: rgba(20, 40, 80, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fef08a 0%, #facc15 50%, #eab308 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-gold {
+            background: linear-gradient(135deg, #facc15 0%, #ca8a04 100%);
+            color: #0b1d3a;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(234, 179, 8, 0.4);
+        }
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(234, 179, 8, 0.6);
+        }
+        .custom-radio input[type="radio"]:checked + label {
+            background-color: rgba(37, 99, 235, 0.3);
+            border-color: #facc15;
+            color: #ffffff;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b1d3a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e3a8a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-gold-500 selection:text-navy-900">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="w-full glass-card sticky top-0 z-40 border-b border-navy-700/50 px-4 py-3">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-gold-400 text-navy-900 flex items-center justify-center font-bold text-xl shadow-lg">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg md:text-xl font-bold tracking-wide gold-gradient-text">TRƯỜNG LIÊN CẤP JESTIER</h1>
+                    <p class="text-xs text-blue-200">Hệ Thống Kiểm Tra & Ôn Tập Kiến Thức Lớp 3</p>
+                </div>
+            </div>
+            
+            <div id="student-badge" class="flex items-center gap-2 bg-navy-800/80 px-3 py-1.5 rounded-full border border-gold-500/30">
+                <i class="fa-solid fa-user-check text-gold-400 text-sm"></i>
+                <span class="text-xs text-blue-200">Thí sinh:</span>
+                <span class="text-sm font-bold text-white tracking-wide">Cẩm Tiên</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-5xl mx-auto w-full p-4 md:p-6 flex-grow">
+
+        <!-- DASHBOARD / START SCREEN -->
+        <section id="screen-dashboard" class="space-y-6">
+            <div class="glass-card rounded-2xl p-6 md:p-8 text-center border-t-4 border-gold-400 relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 opacity-10 text-gold-400 pointer-events-none">
+                    <i class="fa-solid fa-book-bookmark text-9xl"></i>
+                </div>
+
+                <div class="inline-block bg-blue-900/60 text-gold-400 text-xs font-semibold px-4 py-1.5 rounded-full border border-gold-400/30 mb-3">
+                    <i class="fa-solid fa-star mr-1"></i> BÀI KIỂM TRA ĐỊNH KỲ TỔNG ÔN
+                </div>
+
+                <h2 class="text-2xl md:text-4xl font-extrabold mb-3 text-white leading-tight">
+                    KIỂM TRA TỔNG ÔN KIẾN THỨC
+                </h2>
+                <p class="text-lg text-gold-400 font-medium mb-6">Môn thi: TIẾNG VIỆT – TOÁN – TIẾNG ANH</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-left max-w-3xl mx-auto mb-8">
+                    <div class="bg-navy-900/60 p-4 rounded-xl border border-navy-700">
+                        <div class="text-xs text-blue-300 mb-1"><i class="fa-solid fa-user text-gold-400 mr-1.5"></i> Họ và tên học sinh</div>
+                        <div class="text-base font-bold text-white">Cẩm Tiên</div>
+                    </div>
+                    <div class="bg-navy-900/60 p-4 rounded-xl border border-navy-700">
+                        <div class="text-xs text-blue-300 mb-1"><i class="fa-solid fa-clock text-gold-400 mr-1.5"></i> Thời gian tổng / Môn</div>
+                        <div class="text-base font-bold text-white">120 Phút / 40 Phút Môn</div>
+                    </div>
+                    <div class="bg-navy-900/60 p-4 rounded-xl border border-navy-700">
+                        <div class="text-xs text-blue-300 mb-1"><i class="fa-solid fa-list-check text-gold-400 mr-1.5"></i> Cấu trúc đề</div>
+                        <div class="text-base font-bold text-white">3 Môn độc lập</div>
+                    </div>
+                </div>
+
+                <div class="border-t border-navy-700 pt-6">
+                    <h3 class="text-base font-semibold text-blue-200 mb-4">CHỌN PHẦN THI ĐỂ BẮT ĐẦU:</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                        <!-- Môn Tiếng Việt -->
+                        <button onclick="selectMode('TV')" id="card-mode-TV" class="mode-card glass-card p-4 rounded-xl border border-navy-600 text-left hover:border-gold-400 transition-all flex flex-col justify-between group">
+                            <div>
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="text-2xl">📖</span>
+                                    <span class="text-xs px-2 py-0.5 rounded bg-blue-900 text-blue-200">40 phút</span>
+                                </div>
+                                <h4 class="font-bold text-lg text-white group-hover:text-gold-400">TIẾNG VIỆT</h4>
+                                <p class="text-xs text-blue-300 mt-1">Đọc hiểu, Luyện từ & câu, Chính tả, Ghép câu</p>
+                            </div>
+                            <div class="mt-4 flex items-center text-xs font-semibold text-gold-400">
+                                <span>Chọn môn này</span>
+                                <i class="fa-solid fa-arrow-right ml-1 transition-transform group-hover:translate-x-1"></i>
+                            </div>
+                        </button>
+
+                        <!-- Môn Toán -->
+                        <button onclick="selectMode('TOAN')" id="card-mode-TOAN" class="mode-card glass-card p-4 rounded-xl border border-navy-600 text-left hover:border-gold-400 transition-all flex flex-col justify-between group">
+                            <div>
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="text-2xl">📐</span>
+                                    <span class="text-xs px-2 py-0.5 rounded bg-blue-900 text-blue-200">40 phút</span>
+                                </div>
+                                <h4 class="font-bold text-lg text-white group-hover:text-gold-400">TOÁN HỌC</h4>
+                                <p class="text-xs text-blue-300 mt-1">Trắc nghiệm, Đúng/Sai, Điền số</p>
+                            </div>
+                            <div class="mt-4 flex items-center text-xs font-semibold text-gold-400">
+                                <span>Chọn môn này</span>
+                                <i class="fa-solid fa-arrow-right ml-1 transition-transform group-hover:translate-x-1"></i>
+                            </div>
+                        </button>
+
+                        <!-- Môn Tiếng Anh -->
+                        <button onclick="selectMode('TA')" id="card-mode-TA" class="mode-card glass-card p-4 rounded-xl border border-navy-600 text-left hover:border-gold-400 transition-all flex flex-col justify-between group">
+                            <div>
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="text-2xl">🔤</span>
+                                    <span class="text-xs px-2 py-0.5 rounded bg-blue-900 text-blue-200">40 phút</span>
+                                </div>
+                                <h4 class="font-bold text-lg text-white group-hover:text-gold-400">TIẾNG ANH</h4>
+                                <p class="text-xs text-blue-300 mt-1">Vocabulary, Math, Matching, Error</p>
+                            </div>
+                            <div class="mt-4 flex items-center text-xs font-semibold text-gold-400">
+                                <span>Chọn môn này</span>
+                                <i class="fa-solid fa-arrow-right ml-1 transition-transform group-hover:translate-x-1"></i>
+                            </div>
+                        </button>
+
+                        <!-- Bài thi Tổng Hợp -->
+                        <button onclick="selectMode('ALL')" id="card-mode-ALL" class="mode-card glass-card p-4 rounded-xl border-2 border-gold-400/80 text-left bg-gradient-to-br from-navy-800 to-blue-900 hover:border-gold-400 transition-all flex flex-col justify-between group shadow-lg">
+                            <div>
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="text-2xl">🌟</span>
+                                    <span class="text-xs px-2 py-0.5 rounded bg-gold-400 text-navy-900 font-bold">120 phút</span>
+                                </div>
+                                <h4 class="font-bold text-lg text-gold-400">TỔNG HỢP 3 MÔN</h4>
+                                <p class="text-xs text-blue-200 mt-1">Làm toàn bộ bài thi liên tục 3 môn</p>
+                            </div>
+                            <div class="mt-4 flex items-center text-xs font-bold text-white">
+                                <span>Thi toàn bộ</span>
+                                <i class="fa-solid fa-circle-play ml-1 text-gold-400 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </button>
+                    </div>
+
+                    <button id="btn-start-exam" onclick="startExam()" disabled class="btn-gold px-10 py-4 rounded-xl text-lg opacity-50 cursor-not-allowed uppercase tracking-wider flex items-center justify-center gap-2 mx-auto">
+                        <i class="fa-solid fa-play"></i> BẮT ĐẦU LÀM BÀI
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXAM TESTING SCREEN -->
+        <section id="screen-exam" class="hidden space-y-6">
+            <!-- TIMER & NAVIGATION BAR -->
+            <div class="glass-card rounded-xl p-4 sticky top-16 z-30 flex flex-wrap justify-between items-center gap-4 border-b-2 border-gold-400">
+                <div>
+                    <span id="current-subject-badge" class="bg-gold-400 text-navy-900 font-bold px-3 py-1 rounded-full text-xs">
+                        MÔN: TIẾNG VIỆT
+                    </span>
+                    <span class="text-xs text-blue-200 ml-2">Thí sinh: <b>Cẩm Tiên</b></span>
+                </div>
+
+                <div class="flex items-center gap-2 bg-navy-900/90 px-4 py-2 rounded-xl border border-navy-600">
+                    <i class="fa-solid fa-hourglass-half text-gold-400 animate-pulse"></i>
+                    <span class="text-xs text-blue-300">Thời gian còn lại:</span>
+                    <span id="timer-display" class="font-mono text-xl font-bold text-gold-400 tracking-wider">00:00:00</span>
+                </div>
+
+                <button onclick="confirmSubmit()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-5 py-2 rounded-lg text-sm transition-all shadow-md flex items-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i> NỘP BÀI THI
+                </button>
+            </div>
+
+            <!-- EXAM FORM CONTENT CONTAINER -->
+            <form id="exam-form" onsubmit="event.preventDefault();" class="space-y-8">
+                <!-- Dynamic questions will be rendered here -->
+            </form>
+
+            <div class="text-center py-6">
+                <button onclick="confirmSubmit()" class="btn-gold px-12 py-3.5 rounded-xl text-lg font-bold shadow-xl">
+                    <i class="fa-solid fa-check-double mr-2"></i> HOÀN THÀNH VÀ NỘP BÀI
+                </button>
+            </div>
+        </section>
+
+        <!-- RESULTS SCREEN -->
+        <section id="screen-results" class="hidden space-y-6">
+            <div class="glass-card rounded-2xl p-6 md:p-8 border-t-4 border-gold-400">
+                <div class="text-center mb-6">
+                    <div class="w-16 h-16 bg-gold-400 text-navy-900 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-3 shadow-lg">
+                        🏆
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-white">KẾT QUẢ BÀI KIỂM TRA</h2>
+                    <p class="text-sm text-blue-200">Trường Liên Cấp Jestier - Bảng Điểm Chi Tiết</p>
+                </div>
+
+                <!-- STUDENT & EXAM INFO SUMMARY -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                    <div class="bg-navy-900/70 p-4 rounded-xl border border-navy-700">
+                        <span class="text-xs text-blue-300 block">Học sinh</span>
+                        <span class="text-lg font-bold text-white">Cẩm Tiên</span>
+                    </div>
+                    <div class="bg-navy-900/70 p-4 rounded-xl border border-navy-700">
+                        <span class="text-xs text-blue-300 block">Thời gian vào làm</span>
+                        <span id="res-start-time" class="text-sm font-semibold text-white">--:--</span>
+                    </div>
+                    <div class="bg-navy-900/70 p-4 rounded-xl border border-navy-700">
+                        <span class="text-xs text-blue-300 block">Thời gian nộp bài</span>
+                        <span id="res-end-time" class="text-sm font-semibold text-white">--:--</span>
+                    </div>
+                    <div class="bg-navy-900/70 p-4 rounded-xl border border-navy-700">
+                        <span class="text-xs text-blue-300 block">Tổng thời gian làm</span>
+                        <span id="res-duration" class="text-sm font-semibold text-gold-400">-- phút</span>
+                    </div>
+                </div>
+
+                <!-- OVERALL SCORE DISPLAY -->
+                <div class="bg-gradient-to-r from-navy-900 via-navy-800 to-navy-900 p-6 rounded-2xl border border-gold-400/40 text-center mb-8 shadow-2xl relative overflow-hidden">
+                    <div class="text-xs text-blue-300 uppercase tracking-widest mb-1">ĐIỂM SỐ CHÍNH THỨC (THANG ĐIỂM 10)</div>
+                    <div id="res-score-number" class="text-5xl md:text-6xl font-black gold-gradient-text my-2">0.0 / 10</div>
+                    <p id="res-eval-text" class="text-sm font-medium text-blue-200 mt-2">Đang tính toán kết quả...</p>
+                </div>
+
+                <!-- DETAILED REVIEW BY QUESTION -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-bold text-white border-b border-navy-700 pb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-gold-400"></i> LỊCH SỬ CHI TIẾT BÀI LÀM VÀ LỜI GIẢI
+                    </h3>
+                    
+                    <div id="review-container" class="space-y-6">
+                        <!-- Questions review will be appended dynamically -->
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center pt-6 border-t border-navy-700">
+                    <button onclick="resetApp()" class="btn-gold px-8 py-3 rounded-xl font-bold text-base">
+                        <i class="fa-solid fa-rotate-right mr-2"></i> TRỞ VỀ TRANG CHỦ / THI LẠI
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- CUSTOM MODAL DIALOG -->
+    <div id="custom-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card max-w-md w-full rounded-2xl p-6 border-2 border-gold-400 shadow-2xl text-center space-y-4 transform transition-all scale-100">
+            <div id="modal-icon-box" class="w-14 h-14 bg-amber-500/20 text-gold-400 rounded-full flex items-center justify-center text-2xl mx-auto border border-gold-400">
+                <i class="fa-solid fa-lock" id="modal-icon"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white" id="modal-title">THÔNG BÁO</h3>
+            <p class="text-sm text-blue-100 leading-relaxed" id="modal-message">
+                Nội dung thông báo ở đây.
+            </p>
+            <div id="modal-actions" class="pt-2 flex items-center justify-center gap-3">
+                <button id="modal-btn-primary" onclick="closeModal()" class="btn-gold w-full py-2.5 rounded-xl font-bold text-sm">
+                    ĐÃ HIỂU
+                </button>
+                <button id="modal-btn-cancel" onclick="closeModal()" class="hidden bg-navy-800 hover:bg-navy-700 text-blue-200 border border-navy-600 w-full py-2.5 rounded-xl font-bold text-sm transition-all">
+                    HỦY BỎ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="w-full text-center py-4 text-xs text-blue-300/60 border-t border-navy-800">
+        <p>© 2026 Trường Liên Cấp Jestier - Hệ Thống Kiểm Tra Tổng Ôn Lớp 3</p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // CONFIGURATION FOR OPEN TIME LOCK
+        const EXAM_OPEN_CONFIG = {
+            'TV': { isOpen: true, timeString: "08:00 - 24/10/2026" },
+            'TOAN': { isOpen: true, timeString: "08:00 - 24/10/2026" },
+            'TA': { isOpen: true, timeString: "08:00 - 24/10/2026" },
+            'ALL': { isOpen: true, timeString: "08:00 - 23/10/2026" }
+        };
+
+        // GLOBAL APP STATE
+        let selectedMode = null; // 'TV', 'TOAN', 'TA', 'ALL'
+        let examTimer = null;
+        let timeRemainingSeconds = 0;
+        let startTimeObj = null;
+        let endTimeObj = null;
+        let activeQuestions = [];
+
+        // Global State for Interactive Reorder Question (TV_10)
+        let tv10SelectedOrder = [];
+
+        // FULL QUESTION DATABASE
+        const QUESTION_BANK = {
+            TV: [
+                {
+                    id: 'TV_1',
+                    subject: 'TIẾNG VIỆT',
+                    section: 'PHẦN I: KIỂM TRA ĐỌC VÀ LUYỆN TỪ VÀ CÂU - ĐỌC HIỂU VĂN BẢN',
+                    readingText: `<b>MÙA THU VÀ NGÀY KHAI TRƯỜNG</b><br><br>Mùa thu về mang theo cái không khí mát lành, dịu nhẹ. Nhớ ngày nào nghỉ hè, sân trường còn vắng lặng, hàng cây phượng già im lùm đứng tựa ban công. Thế mà hôm nay, ngôi trường như bừng tỉnh sau một giấc ngủ dài. Tiếng cười nói ríu rít của các bạn học sinh làm xôn xao cả góc phố.<br><br>An tung tăng bước qua cổng trường trong bộ đồng phục mới tinh. Bạn cảm thấy mây trời hôm nay như xanh hơn, những giọt sương sớm long lanh trên kẽ lá như những viên ngọc nhỏ. Bàn tay ấm áp của cô giáo chủ nhiệm nắm lấy tay An, dắt bạn vào lớp học mới. An mỉm cười tự tin, lòng ngập tràn niềm vui và quyết tâm phấn đấu trong năm học lớp 3 này.<br><span class="text-xs text-blue-300 italic float-right">(Theo Khánh An)</span><div class="clear-both"></div>`,
+                    question: 'Câu 1 (Trắc nghiệm - 0,5 điểm): Ngôi trường được miêu tả như thế nào khi mùa thu về và học sinh đi học trở lại?',
+                    type: 'MCQ',
+                    points: 0.5,
+                    options: [
+                        { key: 'A', text: 'Vẫn im lùm, vắng lặng như những ngày nghỉ hè.' },
+                        { key: 'B', text: 'Như bừng tỉnh sau giấc ngủ dài, xôn xao tiếng cười nói.' },
+                        { key: 'C', text: 'Trở nên yên tĩnh và buồn bã hơn.' },
+                        { key: 'D', text: 'Rộn rã tiếng ve kêu trên hàng phượng già.' }
+                    ],
+                    correctKey: 'B',
+                    explanation: 'Theo đoạn 1: "Thế mà hôm nay, ngôi trường như bừng tỉnh sau một giấc ngủ dài. Tiếng cười nói ríu rít của các bạn học sinh làm xôn xao cả góc phố."'
+                },
+                {
+                    id: 'TV_2',
+                    subject: 'TIẾNG VIỆT',
+                    section: 'PHẦN I: KIỂM TRA ĐỌC VÀ LUYỆN TỪ VÀ CÂU - ĐỌC HIỂU VĂN BẢN',
+                    question: 'Câu 2 (Trắc nghiệm - 0,5 điểm): Hình ảnh nào trong bài đọc được so sánh với "những viên ngọc nhỏ"?',
+                    type: 'MCQ',
+                    points: 0.5,
+                    options: [
+                        { key: 'A', text: 'Tiếng cười nói của các bạn học sinh.' },
+                        { key: 'B', text: 'Những vệt mây xanh trên bầu trời.' },
+                        { key: 'C', text: 'Những giọt sương sớm long lanh trên kẽ lá.' },
+                        { key: 'D', text: 'Bộ đồng phục mới tinh của bạn An.' }
+                    ],
+                    correctKey: 'C',
+                    explanation: 'Theo đoạn 2: "...những giọt sương sớm long lanh trên kẽ lá như những viên ngọc nhỏ."'
+                },
+                {
+                    id: 'TV_3',
+                    subject: 'TIẾNG VIỆT',
+                    section: 'PHẦN I: KIỂM TRA ĐỌC VÀ LUYỆN TỪ VÀ CÂU - ĐỌC HIỂU VĂN BẢN',
+                    question: 'Câu 3 (Chọn câu trả lời đúng - 0,5 điểm): Chi tiết nào thể hiện sự quan tâm, ấm áp của cô giáo đối với bạn An?',
+                    type: 'MCQ',
+                    points: 0.5,
+                    options: [
+                        { key: 'A', text: 'Cô giáo đứng chờ ở cổng trường để vẫy chào các bạn.' },
+                        { key: 'B', text: 'Bàn tay ấm áp của cô dắt bạn An vào lớp học mới.' },
+                        { key: 'C', text: 'Cô giáo khen bộ đồng phục mới tinh của An.' },
+                        { key: 'D', text: 'Cô giáo phát quà cho tất cả các bạn học sinh trong lớp.' }
+                    ],
+                    correctKey: 'B',
+                    explanation: 'Trong văn bản có chi tiết: "Bàn tay ấm áp của cô giáo chủ nhiệm nắm lấy tay An, dắt bạn vào lớp học mới."'
+                },
+                {
+                    id: 'TV_4',
+                    subject: 'TIẾNG VIỆT',
+                    section: 'PHẦN I: KIỂM TRA ĐỌC VÀ LUYỆN TỪ VÀ CÂU - ĐỌC HIỂU VĂN BẢN',
+                    question: 'Câu 4 (Trắc nghiệm - 1,0 điểm - Mức khó): Qua chi tiết bạn An "mỉm cười tự tin, lòng ngập tràn niềm vui và quyết tâm phấn đấu", em học tập được thái độ nào sau đây khi bước vào năm học mới?',
+                    type: 'MCQ',
+                    points: 1.0,
+                    options: [
+                        { key: 'A', text: 'Lo lắng, rụt rè vì phải gặp lại thầy cô và bạn bè mới.' },
+                        { key: 'B', text: 'Vui vẻ, tự tin và có tinh thần chủ động, quyết tâm cố gắng học tập tốt.' },
+                        { key: 'C', text: 'Chỉ quan tâm đến việc mặc bộ đồng phục mới để khoe với các bạn.' },
+                        { key: 'D', text: 'Trông chờ thầy cô và cha mẹ nhắc nhở rồi mới bắt đầu học bài.' }
+                    ],
+                    correctKey: 'B',
+                    explanation: '• ĐÁP ÁN ĐÚNG: B. Nụ cười "tự tin" và tâm trạng "ngập tràn niềm vui, quyết tâm phấn đấu" của An thể hiện tinh thần sẵn sàng, chủ động, lạc quan và có ý thức cố gắng vươn lên trong học tập.\n• CÁC PHƯƠNG ÁN SAI:\nA sai vì trái ngược với tinh thần tự tin;\nC sai vì bộ đồng phục chỉ là vẻ bề ngoài;\nD sai vì thể hiện thái độ thụ động, ỷ lại.'
+                },
+                {
+                    id: 'TV_5',
+                    subject: 'TIẾNG VIỆT',
+                    section: 'LUYỆN TỪ VÀ CÂU & CHÍNH TẢ',
+                    question: 'Câu 5 (Phân loại từ ngữ - 0,75 điểm): Xếp các từ ngữ sau vào 3 nhóm thích hợp: (mát lành, ngôi trường, bước, mỉm cười, sân trường, ấm áp, tung tăng, giọt sương)',
+                    type: 'CATEGORIZATION',
+                    points: 0.75,
+                    items: ['mát lành', 'ngôi trường', 'bước', 'mỉm cười', 'sân trường', 'ấm áp', 'tung tăng', 'giọt sương'],
+                    categories: ['Từ chỉ sự vật', 'Từ chỉ hoạt động', 'Từ chỉ đặc điểm'],
+                    correctMapping: {
+                        'ngôi trường': 'Từ chỉ sự vật',
+                        'sân trường': 'Từ chỉ sự vật',
+                        'giọt sương': 'Từ chỉ sự vật',
+                        'bước': 'Từ chỉ hoạt động',
+                        'mỉm cười': 'Từ chỉ hoạt động',
+                        'tung tăng': 'Từ chỉ hoạt động',
+                        'mát lành': 'Từ chỉ đặc điểm',
+                        'ấm áp': 'Từ chỉ đặc điểm'
+                    },
+                    explanation: '• Từ chỉ sự vật: ngôi trường, sân trường, giọt sương (0,25đ)\n• Từ chỉ hoạt động: bước, mỉm cười, tung tăng (0,25đ)\n• Từ chỉ đặc điểm: mát lành, ấm áp (0,25đ)'
+                },
+                {
+                    id: 'TV_6_A',
+                    subject: 'TIẾNG VIỆT',
+                    section: 'LUYỆN TỪ VÀ CÂU & CHÍNH TẢ',
+                    question: 'Câu 6a (Biện pháp so sánh - 0,25 điểm): Trong các cách diễn đạt miêu tả tiếng hót chim sơn ca, câu nào sử dụng biện pháp tu từ so sánh giúp làm nổi bật sự trong trẻo, ngân nga và bay bổng của âm thanh?',
+                    type: 'MCQ',
+                    points: 0.25,
+                    options: [
+                        { key: 'A', text: 'Tiếng hót chim sơn ca rộn rã khắp không gian buổi sáng.' },
+                        { key: 'B', text: 'Chim sơn ca cất tiếng hót đánh thức cả cánh đồng yên tĩnh.' },
+                        { key: 'C', text: 'Tiếng hót chim sơn ca như tiếng đàn ai gảy trên cao, ngân nga mãi không thôi.' },
+                        { key: 'D', text: 'Tiếng hót của chim sơn ca to và vang hơn cả tiếng gà gáy sáng.' }
+                    ],
+                    correctKey: 'C',
+                    explanation: 'Câu C sử dụng từ "như" để so sánh tiếng hót với tiếng đàn, gợi lên âm thanh trong trẻo, ngân nga và cao vút.'
+                },
+                {
+                    id: 'TV_6_B',
+                    subject: 'TIẾNG VIỆT',
+                    section: 'LUYỆN TỪ VÀ CÂU & CHÍNH TẢ',
+                    question: 'Câu 6b (Biện pháp so sánh - 0,25 điểm): Trong các cách diễn đạt miêu tả dòng sông mùa thu, câu nào sử dụng biện pháp tu từ so sánh giúp làm nổi bật sự phẳng lặng, xanh mát và êm đềm của mặt nước?',
+                    type: 'MCQ',
+                    points: 0.25,
+                    options: [
+                        { key: 'A', text: 'Dòng sông mùa thu phẳng lặng và xanh mát uốn lượn quanh chân núi.' },
+                        { key: 'B', text: 'Dòng sông mùa thu phẳng lặng và xanh mát tựa một dải lụa mềm mại vắt ngang thung lũng.' },
+                        { key: 'C', text: 'Dòng sông mùa thu phẳng lặng và xanh mát chảy róc rách qua các khe đá.' },
+                        { key: 'D', text: 'Dòng sông mùa thu phẳng lặng và xanh mát hơn cả hồ nước trong làng.' }
+                    ],
+                    correctKey: 'B',
+                    explanation: 'Câu B sử dụng từ so sánh "tựa" kết hợp với hình ảnh gợi hình "một dải lụa mềm mại...".'
+                },
+                {
+                    id: 'TV_6_C',
+                    subject: 'TIẾNG VIỆT',
+                    section: 'LUYỆN TỪ VÀ CÂU & CHÍNH TẢ',
+                    question: 'Câu 6c (Biện pháp so sánh - 0,25 điểm): Trong các cách diễn đạt miêu tả mái tóc của bà, câu nào sử dụng biện pháp tu từ so sánh giúp làm nổi bật vẻ đẹp mịn màng, trắng xốp và hiền từ của người bà?',
+                    type: 'MCQ',
+                    points: 0.25,
+                    options: [
+                        { key: 'A', text: 'Mái tóc của bà em trắng xốp và dài mượt tới ngang lưng.' },
+                        { key: 'B', text: 'Mái tóc của bà em trắng xốp như những đám mây nhỏ đậu nhẹ trên đỉnh đầu.' },
+                        { key: 'C', text: 'Mái tóc của bà em trắng xốp tỏa hương thơm nhẹ nhàng của hoa bưởi.' },
+                        { key: 'D', text: 'Mái tóc của bà em trắng xốp hơn tóc của mẹ và các cô trong nhà.' }
+                    ],
+                    correctKey: 'B',
+                    explanation: 'Câu B sử dụng từ so sánh "như" và gắn liền với hình ảnh bồng bềnh "những đám mây nhỏ...".'
+                },
+                {
+                    id: 'TV_7',
+                    subject: 'TIẾNG VIỆT',
+                    section: 'LUYỆN TỪ VÀ CÂU & CHÍNH TẢ',
+                    question: 'Câu 7 (Điền số & Xác định kiểu câu - 0,75 điểm): Đọc đoạn văn sau và xác định số lượng từng loại câu:\n"Ôi, bầu trời mùa thu hôm nay mới trong xanh làm sao! Mẹ có biết hôm nay ở lớp con được cô giáo khen không? Con hứa sẽ luôn cố gắng chăm ngoan để bố mẹ vui lòng."',
+                    type: 'MULTI_NUMBER',
+                    points: 0.75,
+                    subQuestions: [
+                        { id: 'TV_7_1', label: 'Đoạn văn trên có bao nhiêu câu cảm?', correct: 1 },
+                        { id: 'TV_7_2', label: 'Đoạn văn trên có bao nhiêu câu hỏi?', correct: 1 },
+                        { id: 'TV_7_3', label: 'Đoạn văn trên có bao nhiêu câu kể?', correct: 1 }
+                    ],
+                    explanation: '• 1 câu cảm: "Ôi, bầu trời mùa thu hôm nay mới trong xanh làm sao!"\n• 1 câu hỏi: "Mẹ có biết hôm nay ở lớp con được cô giáo khen không?"\n• 1 câu kể: "Con hứa sẽ luôn cố gắng chăm ngoan để bố mẹ vui lòng."'
+                },
+                {
+                    id: 'TV_8',
+                    subject: 'TIẾNG VIỆT',
+                    section: 'LUYỆN TỪ VÀ CÂU & CHÍNH TẢ',
+                    question: 'Câu 8 (Chính tả - 0,75 điểm): Chọn từ đúng điền vào chỗ trống:',
+                    type: 'SPELLING_SELECT',
+                    points: 0.75,
+                    items: [
+                        { id: 'TV_8_a1', text: '___e chở', options: ['ch', 'tr'], correct: 'ch' },
+                        { id: 'TV_8_a2', text: '___ăm ngoan', options: ['ch', 'tr'], correct: 'ch' },
+                        { id: 'TV_8_a3', text: '___ồng cây', options: ['ch', 'tr'], correct: 'tr' },
+                        { id: 'TV_8_a4', text: '___e nghiêng', options: ['ch', 'tr'], correct: 'ch' },
+                        { id: 'TV_8_b1', text: 'dịu h___', options: ['iên', 'iêng'], correct: 'iên' },
+                        { id: 'TV_8_b2', text: 'th___ nhiên', options: ['iên', 'iêng'], correct: 'iên' },
+                        { id: 'TV_8_b3', text: 'ch___ sĩ', options: ['iên', 'iêng'], correct: 'iên' },
+                        { id: 'TV_8_b4', text: 'gốm s___', options: ['iên', 'iêng'], correct: 'iêng' }
+                    ],
+                    explanation: 'a) che chở ; chăm ngoan ; trồng cây ; che nghiêng.\nb) dịu hiền ; thiên nhiên ; chiến sĩ ; gốm siêng.'
+                },
+                {
+                    id: 'TV_9',
+                    subject: 'TIẾNG VIỆT',
+                    section: 'LUYỆN TỪ VÀ CÂU & CHÍNH TẢ',
+                    question: 'Câu 9 (Đặt câu - 0,5 điểm - Mức khó): Trong các câu dưới đây, câu nào vừa sử dụng hình ảnh so sánh gợi cảm xúc, vừa nói về thầy cô/mái trường và dùng dấu câu cuối câu phù hợp nhất?',
+                    type: 'MCQ',
+                    points: 0.5,
+                    options: [
+                        { key: 'A', text: 'Mái trường thân yêu của chúng em có nhiều cây xanh như cây bàng, cây phượng và cây bằng lăng.' },
+                        { key: 'B', text: 'Thầy cô giáo luôn bao dung và kiên nhẫn như dòng sông chở nặng phù sa đưa chúng em đến bến bờ tri thức!' },
+                        { key: 'C', text: 'Trường của em năm nay rộng rãi và nhiều tầng hơn hẳn ngôi trường cũ ngày trước.' },
+                        { key: 'D', text: 'Ôi, cô giáo của em thật là dịu dàng và yêu thương học sinh biết bao.' }
+                    ],
+                    correctKey: 'B',
+                    explanation: '• Đáp án đúng: B (Có so sánh nghệ thuật "như dòng sông chở nặng phù sa...", đúng chủ đề thầy cô, kết thúc bằng dấu ! phù hợp).\n• Giải thích bẫy: Câu A từ "như" dùng để liệt kê ví dụ; Câu C so sánh tả thực khô khan; Câu D cảm xúc nhưng không có phép so sánh.'
+                },
+                {
+                    id: 'TV_10',
+                    subject: 'TIẾNG VIỆT',
+                    section: 'PHẦN II: KIỂM TRA VIẾT (TẬP LÀM VĂN - 4,0 điểm)',
+                    question: 'Câu 10 (Ghép đoạn văn - 4,0 điểm): Em hãy nhấp chọn các câu văn dưới đây theo đúng thứ tự logic để tạo thành một bài văn hoàn chỉnh kể về kỉ niệm ngày đầu tiên đi học.',
+                    type: 'REORDER_PARAGRAPH',
+                    points: 4.0,
+                    correctSequence: ['b', 'e', 'h', 'g', 'c', 'a', 'd'],
+                    sentencePool: [
+                        { id: 'a', text: 'a) Khi tan học, em chạy đến ôm mẹ và kể cho mẹ nghe những điều thú vị ở trường.' },
+                        { id: 'b', text: 'b) Ngày đầu tiên đi học là một kỉ niệm mà em sẽ không bao giờ quên.' },
+                        { id: 'c', text: 'c) Chẳng bao lâu sau, em đã vui vẻ cùng các bạn học tập, vui chơi và hát những bài hát thật hay.' },
+                        { id: 'd', text: 'd) Kỉ niệm ấy giúp em hiểu rằng chỉ cần mạnh dạn, tự tin, em sẽ có thêm nhiều người bạn tốt và những niềm vui mới.' },
+                        { id: 'e', text: 'e) Sáng hôm ấy, mẹ đưa em đến trường trong niềm háo hức xen lẫn lo lắng.' },
+                        { id: 'g', text: 'g) Thấy em rụt rè, cô giáo dịu dàng nắm tay và động viên em làm quen với các bạn.' },
+                        { id: 'h', text: 'h) Khi bước vào lớp, em bỡ ngỡ vì xung quanh toàn là những gương mặt xa lạ.' }
+                    ],
+                    explanation: '• Thứ tự ghép đoạn văn chuẩn: b – e – h – g – c – a – d (4,0 điểm).\n• Biểu điểm chi tiết:\n + Ghép đúng 1/7 câu: 0,4đ (10%)\n + Ghép đúng 2/7 câu: 0,8đ (20%)\n + Ghép đúng 3/7 câu: 1,2đ (30%)\n + Ghép đúng 4/7 câu: 2,0đ (50%)\n + Ghép đúng 5/7 câu: 3,0đ (75%)\n + Ghép đúng 6/7 câu: 3,2đ (80%)\n + Ghép đúng 7/7 câu: 4,0đ (100%)'
+                }
+            ],
+
+            TOAN: [
+                {
+                    id: 'MATH_1',
+                    subject: 'TOÁN',
+                    section: 'PHẦN 1: TRẮC NGHIỆM CHỌN 1 ĐÁP ÁN ĐÚNG',
+                    question: 'Câu 1: Số lớn nhất có ba chữ số khác nhau là:',
+                    type: 'MCQ',
+                    points: 0.5,
+                    options: [
+                        { key: 'A', text: '999' },
+                        { key: 'B', text: '987' },
+                        { key: 'C', text: '900' },
+                        { key: 'D', text: '897' }
+                    ],
+                    correctKey: 'B',
+                    explanation: 'Số có 3 chữ số khác nhau lớn nhất chọn từ các chữ số giảm dần từ lớn nhất: 9, 8, 7 → 987.'
+                },
+                {
+                    id: 'MATH_2',
+                    subject: 'TOÁN',
+                    section: 'PHẦN 1: TRẮC NGHIỆM CHỌN 1 ĐÁP ÁN ĐÚNG',
+                    question: 'Câu 2: Kết quả của phép tính \\(725 - 368\\) là:',
+                    type: 'MCQ',
+                    points: 0.5,
+                    options: [
+                        { key: 'A', text: '357' },
+                        { key: 'B', text: '367' },
+                        { key: 'C', text: '457' },
+                        { key: 'D', text: '359' }
+                    ],
+                    correctKey: 'A',
+                    explanation: '725 - 368 = 357.'
+                },
+                {
+                    id: 'MATH_3',
+                    subject: 'TOÁN',
+                    section: 'PHẦN 1: TRẮC NGHIỆM CHỌN 1 ĐÁP ÁN ĐÚNG',
+                    question: 'Câu 3: Tìm \\(x\\), biết: \\(x : 7 = 8\\).',
+                    type: 'MCQ',
+                    points: 0.5,
+                    options: [
+                        { key: 'A', text: '56' },
+                        { key: 'B', text: '61' },
+                        { key: 'C', text: '41' },
+                        { key: 'D', text: '51' }
+                    ],
+                    correctKey: 'A',
+                    explanation: 'x = 8 \\times 7 = 56.'
+                },
+                {
+                    id: 'MATH_4',
+                    subject: 'TOÁN',
+                    section: 'PHẦN 1: TRẮC NGHIỆM CHỌN 1 ĐÁP ÁN ĐÚNG',
+                    question: 'Câu 4: Biết \\(8 \\times y = 72\\) và \\(54 : z = 9\\). Giá trị của biểu thức \\(y + z\\) là:',
+                    type: 'MCQ',
+                    points: 0.5,
+                    options: [
+                        { key: 'A', text: '15' },
+                        { key: 'B', text: '12' },
+                        { key: 'C', text: '17' },
+                        { key: 'D', text: '18' }
+                    ],
+                    correctKey: 'A',
+                    explanation: 'y = 72 : 8 = 9; z = 54 : 9 = 6. Vậy y + z = 9 + 6 = 15.'
+                },
+                {
+                    id: 'MATH_5',
+                    subject: 'TOÁN',
+                    section: 'PHẦN 1: TRẮC NGHIỆM CHỌN 1 ĐÁP ÁN ĐÚNG',
+                    question: 'Câu 5: Trang trại có 49 con bò. Số con cừu bằng \\(\\frac{1}{7}\\) số con bò. Hỏi trang trại có bao nhiêu con cừu?',
+                    type: 'MCQ',
+                    points: 0.5,
+                    options: [
+                        { key: 'A', text: '7 con' },
+                        { key: 'B', text: '8 con' },
+                        { key: 'C', text: '9 con' },
+                        { key: 'D', text: '49 con' }
+                    ],
+                    correctKey: 'A',
+                    explanation: 'Số cừu = 49 : 7 = 7 (con).'
+                },
+                {
+                    id: 'MATH_6',
+                    subject: 'TOÁN',
+                    section: 'PHẦN 1: TRẮC NGHIỆM CHỌN 1 ĐÁP ÁN ĐÚNG',
+                    question: 'Câu 6: Lớp 3A có 12 học sinh giỏi. Số học sinh khá gấp 3 lần số học sinh giỏi. Hỏi lớp 3A có tất cả bao nhiêu học sinh giỏi và khá?',
+                    type: 'MCQ',
+                    points: 0.5,
+                    options: [
+                        { key: 'A', text: '36 học sinh' },
+                        { key: 'B', text: '24 học sinh' },
+                        { key: 'C', text: '48 học sinh' },
+                        { key: 'D', text: '40 học sinh' }
+                    ],
+                    correctKey: 'C',
+                    explanation: 'Số HS khá = 12 \\times 3 = 36. Tổng số HS = 12 + 36 = 48 (học sinh).'
+                },
+                {
+                    id: 'MATH_7',
+                    subject: 'TOÁN',
+                    section: 'PHẦN 1: TRẮC NGHIỆM CHỌN 1 ĐÁP ÁN ĐÚNG',
+                    question: 'Câu 7: Cho đoạn thẳng \\(AB = 40\\text{ cm}\\). Gọi \\(M\\) là trung điểm của \\(AB\\), điểm \\(N\\) là trung điểm của \\(AM\\). Độ dài đoạn thẳng \\(MN\\) là:',
+                    type: 'MCQ',
+                    points: 0.5,
+                    options: [
+                        { key: 'A', text: '20 cm' },
+                        { key: 'B', text: '10 cm' },
+                        { key: 'C', text: '5 cm' },
+                        { key: 'D', text: '15 cm' }
+                    ],
+                    correctKey: 'B',
+                    explanation: 'AM = 40 : 2 = 20 cm; MN = 20 : 2 = 10 cm.'
+                },
+                {
+                    id: 'MATH_8',
+                    subject: 'TOÁN',
+                    section: 'PHẦN 1: TRẮC NGHIỆM CHỌN 1 ĐÁP ÁN ĐÚNG',
+                    question: 'Câu 8: Một hình tròn tâm \\(O\\) có đường kính \\(MN = 36\\text{ cm}\\). Độ dài bán kính \\(OM\\) của hình tròn đó là:',
+                    type: 'MCQ',
+                    points: 0.5,
+                    options: [
+                        { key: 'A', text: '36 cm' },
+                        { key: 'B', text: '18 cm' },
+                        { key: 'C', text: '72 cm' },
+                        { key: 'D', text: '9 cm' }
+                    ],
+                    correctKey: 'B',
+                    explanation: 'Bán kính = 36 : 2 = 18 cm.'
+                },
+                {
+                    id: 'MATH_9',
+                    subject: 'TOÁN',
+                    section: 'PHẦN 1: TRẮC NGHIỆM CHỌN 1 ĐÁP ÁN ĐÚNG',
+                    question: 'Câu 9: Cửa hàng có 45 kg gạo. Ngày thứ nhất bán được 9 kg. Ngày thứ hai bán được gấp 2 lần ngày thứ nhất. Hỏi sau hai ngày cửa hàng còn lại bao nhiêu kilôgam gạo?',
+                    type: 'MCQ',
+                    points: 0.5,
+                    options: [
+                        { key: 'A', text: '27 kg' },
+                        { key: 'B', text: '36 kg' },
+                        { key: 'C', text: '18 kg' },
+                        { key: 'D', text: '9 kg' }
+                    ],
+                    correctKey: 'C',
+                    explanation: 'Ngày 2 bán = 9 \\times 2 = 18 kg. Tổng bán = 9 + 18 = 27 kg. Còn lại = 45 - 27 = 18 kg.'
+                },
+                {
+                    id: 'MATH_10',
+                    subject: 'TOÁN',
+                    section: 'PHẦN 1: TRẮC NGHIỆM CHỌN 1 ĐÁP ÁN ĐÚNG',
+                    question: 'Câu 10: Cho một hình vuông có cạnh dài 16 cm. Người ta vẽ một hình tròn tâm O nằm bên trong hình vuông sao cho đường kính của hình tròn bằng đúng độ dài cạnh hình vuông. Độ dài bán kính của hình tròn đó là:',
+                    type: 'MCQ',
+                    points: 0.5,
+                    options: [
+                        { key: 'A', text: '16 cm' },
+                        { key: 'B', text: '32 cm' },
+                        { key: 'C', text: '8 cm' },
+                        { key: 'D', text: '4 cm' }
+                    ],
+                    correctKey: 'C',
+                    explanation: 'Đường kính hình tròn = cạnh hình vuông = 16 cm. Bán kính = 16 : 2 = 8 cm.'
+                },
+                {
+                    id: 'MATH_11',
+                    subject: 'TOÁN',
+                    section: 'PHẦN 2: TRẮC NGHIỆM ĐÚNG / SAI',
+                    question: 'Câu 11: Trong phép chia hết, muốn tìm số bị chia ta lấy thương nhân với số chia.',
+                    type: 'TRUE_FALSE',
+                    points: 0.5,
+                    correctValue: 'Đúng',
+                    explanation: 'Khẳng định Đúng theo quy tắc tìm số bị chia chưa biết trong phép chia hết.'
+                },
+                {
+                    id: 'MATH_12',
+                    subject: 'TOÁN',
+                    section: 'PHẦN 2: TRẮC NGHIỆM ĐÚNG / SAI',
+                    question: 'Câu 12: Số 604 đọc là "Sáu trăm linh tư".',
+                    type: 'TRUE_FALSE',
+                    points: 0.5,
+                    correctValue: 'Đúng',
+                    explanation: 'Đúng. Đây là cách đọc chuẩn cho số 604.'
+                },
+                {
+                    id: 'MATH_13',
+                    subject: 'TOÁN',
+                    section: 'PHẦN 2: TRẮC NGHIỆM ĐÚNG / SAI',
+                    question: 'Câu 13: Trong một hình tròn, độ dài bán kính luôn bằng một nửa độ dài đường kính.',
+                    type: 'TRUE_FALSE',
+                    points: 0.5,
+                    correctValue: 'Đúng',
+                    explanation: 'Đúng. Tính chất hình tròn: r = d : 2.'
+                },
+                {
+                    id: 'MATH_14',
+                    subject: 'TOÁN',
+                    section: 'PHẦN 2: TRẮC NGHIỆM ĐÚNG / SAI',
+                    question: 'Câu 14: \\(\\frac{1}{5}\\) của \\(45\\text{ kg}\\) nhiều hơn \\(\\frac{1}{4}\\) của \\(32\\text{ kg}\\).',
+                    type: 'TRUE_FALSE',
+                    points: 0.5,
+                    correctValue: 'Đúng',
+                    explanation: '\\(\\frac{1}{5}\\) của 45 kg = 9 kg; \\(\\frac{1}{4}\\) của 32 kg = 8 kg. Vì 9 kg > 8 kg nên khẳng định trên là Đúng.'
+                },
+                {
+                    id: 'MATH_15',
+                    subject: 'TOÁN',
+                    section: 'PHẦN 3: ĐIỀN SỐ THÍCH HỢP (Chỉ điền số nguyên)',
+                    question: 'Câu 15: Tìm một số, biết rằng lấy 650 trừ đi số đó thì được kết quả là 280. Số đó là:',
+                    type: 'NUMBER_INPUT',
+                    points: 0.5,
+                    correctNumber: 370,
+                    explanation: '650 - x = 280 ⇒ x = 650 - 280 = 370.'
+                },
+                {
+                    id: 'MATH_16',
+                    subject: 'TOÁN',
+                    section: 'PHẦN 3: ĐIỀN SỐ THÍCH HỢP (Chỉ điền số nguyên)',
+                    question: 'Câu 16: Kết quả của biểu thức \\(56 : 7 + 42\\) là:',
+                    type: 'NUMBER_INPUT',
+                    points: 0.5,
+                    correctNumber: 50,
+                    explanation: '56 : 7 = 8 → 8 + 42 = 50.'
+                },
+                {
+                    id: 'MATH_17',
+                    subject: 'TOÁN',
+                    section: 'PHẦN 3: ĐIỀN SỐ THÍCH HỢP (Chỉ điền số nguyên)',
+                    question: 'Câu 17: Tìm số bị chia trong một phép chia hết cho 8, biết thương của phép chia đó bằng 9. Số bị chia là:',
+                    type: 'NUMBER_INPUT',
+                    points: 0.5,
+                    correctNumber: 72,
+                    explanation: '8 \\times 9 = 72.'
+                },
+                {
+                    id: 'MATH_18',
+                    subject: 'TOÁN',
+                    section: 'PHẦN 3: ĐIỀN SỐ THÍCH HỢP (Chỉ điền số nguyên)',
+                    question: 'Câu 18: Cho 3 điểm thẳng hàng \\(X, Y, Z\\) theo thứ tự đó. Biết \\(XY = 18\\text{ cm}\\) và \\(XZ = 42\\text{ cm}\\). Độ dài đoạn thẳng \\(YZ\\) là (cm):',
+                    type: 'NUMBER_INPUT',
+                    points: 0.5,
+                    correctNumber: 24,
+                    explanation: 'YZ = XZ - XY = 42 - 18 = 24 cm.'
+                },
+                {
+                    id: 'MATH_19',
+                    subject: 'TOÁN',
+                    section: 'PHẦN 3: ĐIỀN SỐ THÍCH HỢP (Chỉ điền số nguyên)',
+                    question: 'Câu 19: Khung bức tranh hình tròn có đường kính \\(20\\text{ cm}\\). Bán kính của bức tranh đó là (cm):',
+                    type: 'NUMBER_INPUT',
+                    points: 0.5,
+                    correctNumber: 10,
+                    explanation: 'r = 20 : 2 = 10 cm.'
+                },
+                {
+                    id: 'MATH_20',
+                    subject: 'TOÁN',
+                    section: 'PHẦN 3: ĐIỀN SỐ THÍCH HỢP (Chỉ điền số nguyên)',
+                    question: 'Câu 20: Học sinh lớp 3B xếp thành 8 hàng, mỗi hàng có 4 bạn. Nếu xếp số học sinh đó thành 4 hàng đều nhau thì mỗi hàng có bao nhiêu bạn?',
+                    type: 'NUMBER_INPUT',
+                    points: 0.5,
+                    correctNumber: 8,
+                    explanation: 'Tổng học sinh = 8 \\times 4 = 32 bạn. Mỗi hàng mới có = 32 : 4 = 8 bạn.'
+                }
+            ],
+
+            TA: [
+                {
+                    id: 'ENG_1',
+                    subject: 'TIẾNG ANH',
+                    section: 'PHẦN I: TRẮC NGHIỆM (MULTIPLE CHOICE)',
+                    question: "Câu 1: Hi, I'm Linh. How __________ you? - Fine, thank you.",
+                    type: 'MCQ',
+                    points: 0.25,
+                    options: [
+                        { key: 'A', text: 'is' },
+                        { key: 'B', text: 'am' },
+                        { key: 'C', text: 'are' },
+                        { key: 'D', text: 'do' }
+                    ],
+                    correctKey: 'C',
+                    explanation: 'Cách hỏi thăm sức khỏe: "How are you?"'
+                },
+                {
+                    id: 'ENG_2',
+                    subject: 'TIẾNG ANH',
+                    section: 'PHẦN I: TRẮC NGHIỆM (MULTIPLE CHOICE)',
+                    question: "Câu 2: What's __________ name? - My name's Mary.",
+                    type: 'MCQ',
+                    points: 0.25,
+                    options: [
+                        { key: 'A', text: 'my' },
+                        { key: 'B', text: 'your' },
+                        { key: 'C', text: 'you' },
+                        { key: 'D', text: 'it' }
+                    ],
+                    correctKey: 'B',
+                    explanation: 'Hỏi tên người đối diện: "What\'s your name?"'
+                },
+                {
+                    id: 'ENG_3',
+                    subject: 'TIẾNG ANH',
+                    section: 'PHẦN I: TRẮC NGHIỆM (MULTIPLE CHOICE)',
+                    question: "Câu 3: How old are you? - I'm __________ years old.",
+                    type: 'MCQ',
+                    points: 0.25,
+                    options: [
+                        { key: 'A', text: 'eight' },
+                        { key: 'B', text: 'eighth' },
+                        { key: 'C', text: 'a' },
+                        { key: 'D', text: 'an' }
+                    ],
+                    correctKey: 'A',
+                    explanation: 'Dùng số đếm "eight" để trả lời về tuổi: "eight years old".'
+                },
+                {
+                    id: 'ENG_4',
+                    subject: 'TIẾNG ANH',
+                    section: 'PHẦN I: TRẮC NGHIỆM (MULTIPLE CHOICE)',
+                    question: "Câu 4: Is that Mr Long? - No, it __________. It's Mr Loc.",
+                    type: 'MCQ',
+                    points: 0.25,
+                    options: [
+                        { key: 'A', text: 'is' },
+                        { key: 'B', text: 'isn\'t' },
+                        { key: 'C', text: 'not' },
+                        { key: 'D', text: 'aren\'t' }
+                    ],
+                    correctKey: 'B',
+                    explanation: 'Câu trả lời phủ định: "No, it isn\'t."'
+                },
+                {
+                    id: 'ENG_5',
+                    subject: 'TIẾNG ANH',
+                    section: 'PHẦN I: TRẮC NGHIỆM (MULTIPLE CHOICE)',
+                    question: "Câu 5: What's this? - It's __________ ear.",
+                    type: 'MCQ',
+                    points: 0.25,
+                    options: [
+                        { key: 'A', text: 'a' },
+                        { key: 'B', text: 'an' },
+                        { key: 'C', text: 'two' },
+                        { key: 'D', text: 'my a' }
+                    ],
+                    correctKey: 'B',
+                    explanation: 'Từ "ear" bắt đầu bằng nguyên âm "e" nên dùng mạo từ "an".'
+                },
+                {
+                    id: 'ENG_6',
+                    subject: 'TIẾNG ANH',
+                    section: 'PHẦN I: TRẮC NGHIỆM (MULTIPLE CHOICE)',
+                    question: "Câu 6: __________ your mouth, please!",
+                    type: 'MCQ',
+                    points: 0.25,
+                    options: [
+                        { key: 'A', text: 'Touch' },
+                        { key: 'B', text: 'Open' },
+                        { key: 'C', text: 'Close' },
+                        { key: 'D', text: 'Cả B và C đều đúng' }
+                    ],
+                    correctKey: 'D',
+                    explanation: 'Cả "Open your mouth" (Mở miệng) và "Close your mouth" (Đóng miệng) đều đúng ngữ pháp.'
+                },
+                {
+                    id: 'ENG_7',
+                    subject: 'TIẾNG ANH',
+                    section: 'PHẦN I: TRẮC NGHIỆM (MULTIPLE CHOICE)',
+                    question: "Câu 7: This __________ my friend, Ben.",
+                    type: 'MCQ',
+                    points: 0.25,
+                    options: [
+                        { key: 'A', text: 'is' },
+                        { key: 'B', text: 'are' },
+                        { key: 'C', text: 'am' },
+                        { key: 'D', text: 'it\'s' }
+                    ],
+                    correctKey: 'A',
+                    explanation: 'Cấu trúc giới thiệu: "This is my friend..."'
+                },
+                {
+                    id: 'ENG_8',
+                    subject: 'TIẾNG ANH',
+                    section: 'PHẦN I: TRẮC NGHIỆM (MULTIPLE CHOICE)',
+                    question: "Câu 8: __________ is that? - It's a hand.",
+                    type: 'MCQ',
+                    points: 0.25,
+                    options: [
+                        { key: 'A', text: 'Who' },
+                        { key: 'B', text: 'What' },
+                        { key: 'C', text: 'How' },
+                        { key: 'D', text: 'Is' }
+                    ],
+                    correctKey: 'B',
+                    explanation: 'Hỏi đồ vật/bộ phận cơ thể dùng "What": "What is that?"'
+                },
+                {
+                    id: 'ENG_9',
+                    subject: 'TIẾNG ANH',
+                    section: 'PHẦN I: TRẮC NGHIỆM (MULTIPLE CHOICE)',
+                    question: "Câu 9: Is this Mai? - __________, it is.",
+                    type: 'MCQ',
+                    points: 0.25,
+                    options: [
+                        { key: 'A', text: 'No' },
+                        { key: 'B', text: 'Not' },
+                        { key: 'C', text: 'Yes' },
+                        { key: 'D', text: 'Fine' }
+                    ],
+                    correctKey: 'C',
+                    explanation: 'Trả lời khẳng định: "Yes, it is."'
+                },
+                {
+                    id: 'ENG_10',
+                    subject: 'TIẾNG ANH',
+                    section: 'PHẦN I: TRẮC NGHIỆM (MULTIPLE CHOICE)',
+                    question: "Câu 10: Điền mạo từ đúng vào chỗ trống: \"It's _____ face and _____ eye.\"",
+                    type: 'MCQ',
+                    points: 0.25,
+                    options: [
+                        { key: 'A', text: 'a / a' },
+                        { key: 'B', text: 'an / a' },
+                        { key: 'C', text: 'a / an' },
+                        { key: 'D', text: 'an / an' }
+                    ],
+                    correctKey: 'C',
+                    explanation: 'face bắt đầu bằng phụ âm \'f\' -> a face; eye bắt đầu bằng nguyên âm \'e\' -> an eye.'
+                },
+                {
+                    id: 'ENG_11_15',
+                    subject: 'TIẾNG ANH',
+                    section: 'PHẦN II: ĐIỀN SỐ VÀ LÀM TOÁN TIẾNG ANH (NUMBERS & MATH)',
+                    question: 'Đọc các phép tính hoặc câu đố bằng tiếng Anh và viết đáp án bằng CHỮ (Words):',
+                    type: 'TEXT_INPUT_MULTI',
+                    points: 1.5,
+                    subQuestions: [
+                        { id: 'ENG_11', label: '11. two + six =', correct: 'eight' },
+                        { id: 'ENG_12', label: '12. ten - three =', correct: 'seven' },
+                        { id: 'ENG_13', label: '13. four + five =', correct: 'nine' },
+                        { id: 'ENG_14', label: '14. How old is Nam? (Nam sinh năm 2017, năm nay là 2026) -> He is _____ years old.', correct: 'nine' },
+                        { id: 'ENG_15', label: '15. I have one nose, two eyes, and two ears. Total parts = _____ parts.', correct: 'five' }
+                    ],
+                    explanation: '11. 2 + 6 = 8 (eight)\n12. 10 - 3 = 7 (seven)\n13. 4 + 5 = 9 (nine)\n14. 2026 - 2017 = 9 (nine)\n15. 1 + 2 + 2 = 5 (five)'
+                },
+                {
+                    id: 'ENG_16_20',
+                    subject: 'TIẾNG ANH',
+                    section: 'PHẦN III: NỐI CÂU HỎI VỚI CÂU TRẢ LỜI (MATCHING)',
+                    question: 'Nối câu ở Cột A với phản xạ đáp lại phù hợp ở Cột B:',
+                    type: 'MATCHING_SELECT',
+                    points: 1.5,
+                    pairs: [
+                        { id: 'ENG_16', textA: '16. Good night / Goodbye, class!', correct: 'b', textB: 'b. Goodbye, teacher!' },
+                        { id: 'ENG_17', textA: '17. Is that Ms Hoa?', correct: 'c', textB: 'c. No, it isn\'t. It\'s Ms Hien.' },
+                        { id: 'ENG_18', textA: '18. How old are you, Lucy?', correct: 'e', textB: 'e. I\'m nine years old.' },
+                        { id: 'ENG_19', textA: '19. What\'s that?', correct: 'a', textB: 'a. It\'s an eye.' },
+                        { id: 'ENG_20', textA: '20. Open your eyes!', correct: 'd', textB: 'd. Touch your hair!' }
+                    ],
+                    explanation: '16 - b; 17 - c; 18 - e; 19 - a; 20 - d'
+                },
+                {
+                    id: 'ENG_21_25',
+                    subject: 'TIẾNG ANH',
+                    section: 'PHẦN IV: ĐIỀN TỪ HOÀN THÀNH HỘI THOẠI (COMPLETE THE DIALOGUE)',
+                    question: 'Chọn các từ trong khung điền vào chỗ trống thích hợp: <b>[ an / name / friend / Touch / old ]</b><br><br>' +
+                              'Minh: Hi! My (21) ____ is Minh. What\'s your name?<br>' +
+                              'Peter: Hello, Minh. I\'m Peter. This is my (22) ____, Mary.<br>' +
+                              'Minh: Hi, Mary. How (23) ____ are you?<br>' +
+                              'Mary: I\'m seven years old. What\'s this, Minh?<br>' +
+                              'Minh: It\'s (24) ____ ear.<br>' +
+                              'Mary: (25) ____ your ear, please!<br>' +
+                              'Minh: OK.',
+                    type: 'DIALOGUE_SELECT',
+                    points: 1.5,
+                    optionsList: ['an', 'name', 'friend', 'Touch', 'old'],
+                    subQuestions: [
+                        { id: 'ENG_21', label: 'Chỗ trống (21):', correct: 'name' },
+                        { id: 'ENG_22', label: 'Chỗ trống (22):', correct: 'friend' },
+                        { id: 'ENG_23', label: 'Chỗ trống (23):', correct: 'old' },
+                        { id: 'ENG_24', label: 'Chỗ trống (24):', correct: 'an' },
+                        { id: 'ENG_25', label: 'Chỗ trống (25):', correct: 'Touch' }
+                    ],
+                    explanation: '(21) name ; (22) friend ; (23) old ; (24) an ; (25) Touch'
+                },
+                {
+                    id: 'ENG_26_30',
+                    subject: 'TIẾNG ANH',
+                    section: 'PHẦN V: TÌM VÀ SỬA LỖI SAI (ERROR CORRECTION)',
+                    question: 'Mỗi câu dưới đây có một lỗi sai. Chọn từ sai và từ sửa đúng tương ứng:',
+                    type: 'ERROR_CORRECTION_SELECT',
+                    points: 1.5,
+                    items: [
+                        { id: 'ENG_26', text: '26. It\'s a eye.', options: ['a -> an', 'eye -> eyes', 'It\'s -> They\'re'], correct: 'a -> an' },
+                        { id: 'ENG_27', text: '27. Is that Ben? - No, it is.', options: ['that -> this', 'is -> isn\'t', 'No -> Yes'], correct: 'is -> isn\'t' },
+                        { id: 'ENG_28', text: '28. How old you are? - I\'m eight years old.', options: ['you are -> are you', 'old -> age', 'eight -> eighth'], correct: 'you are -> are you' },
+                        { id: 'ENG_29', text: '29. What this? - It\'s a hand.', options: ['What -> What\'s', 'this -> that', 'a -> an'], correct: 'What -> What\'s' },
+                        { id: 'ENG_30', text: '30. Touch you face, please!', options: ['Touch -> Open', 'you -> your', 'face -> faces'], correct: 'you -> your' }
+                    ],
+                    explanation: '26. a -> an\n27. is -> isn\'t\n28. you are -> are you\n29. What -> What\'s\n30. you -> your'
+                },
+                {
+                    id: 'ENG_31_35',
+                    subject: 'TIẾNG ANH',
+                    section: 'PHẦN VI: SẮP XẾP TỪ THÀNH CÂU HOÀN CHỈNH (REORDER THE WORDS)',
+                    question: 'Chọn câu sắp xếp chính xác nhất cho các từ bị xáo trộn:',
+                    type: 'MCQ_MULTI',
+                    points: 1.5,
+                    items: [
+                        {
+                            id: 'ENG_31',
+                            prompt: '31. is / This / my / teacher, / Long. / Mr',
+                            options: [
+                                'This is my teacher, Mr Long.',
+                                'This my teacher is Mr Long.',
+                                'Mr Long is teacher my This.',
+                                'Teacher is my Mr Long This.'
+                            ],
+                            correct: 'This is my teacher, Mr Long.'
+                        },
+                        {
+                            id: 'ENG_32',
+                            prompt: '32. your / mouth! / Open',
+                            options: [
+                                'Open your mouth!',
+                                'Your open mouth!',
+                                'Mouth open your!',
+                                'Open mouth your!'
+                            ],
+                            correct: 'Open your mouth!'
+                        },
+                        {
+                            id: 'ENG_33',
+                            prompt: '33. old / sister? / How / is / your',
+                            options: [
+                                'How old is your sister?',
+                                'How is your sister old?',
+                                'Your sister is how old?',
+                                'Old how is your sister?'
+                            ],
+                            correct: 'How old is your sister?'
+                        },
+                        {
+                            id: 'ENG_34',
+                            prompt: '34. that / Is / Bill? / - / isn\'t. / No, / it',
+                            options: [
+                                'Is that Bill? - No, it isn\'t.',
+                                'That is Bill? - No, it isn\'t.',
+                                'Is Bill that? - No, isn\'t it.',
+                                'Is that Bill? - No, isn\'t it.'
+                            ],
+                            correct: 'Is that Bill? - No, it isn\'t.'
+                        },
+                        {
+                            id: 'ENG_35',
+                            prompt: '35. name\'s / Hello, / Ben. / my / What\'s / name? / your',
+                            options: [
+                                'Hello, my name\'s Ben. What\'s your name?',
+                                'Hello, What\'s your name? my name\'s Ben.',
+                                'My name\'s Ben Hello, What\'s your name?',
+                                'Hello, my Ben name\'s. What\'s your name?'
+                            ],
+                            correct: 'Hello, my name\'s Ben. What\'s your name?'
+                        }
+                    ],
+                    explanation: '31. This is my teacher, Mr Long.\n32. Open your mouth!\n33. How old is your sister?\n34. Is that Bill? - No, it isn\'t.\n35. Hello, my name\'s Ben. What\'s your name?'
+                }
+            ]
+        };
+
+        // HELPER UTILITIES
+        function shuffleArray(array) {
+            const arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        function showModal(title, message, isConfirm = false) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-message').innerHTML = message;
+            
+            const primaryBtn = document.getElementById('modal-btn-primary');
+            const cancelBtn = document.getElementById('modal-btn-cancel');
+            const iconBox = document.getElementById('modal-icon-box');
+            const iconElem = document.getElementById('modal-icon');
+
+            if (isConfirm) {
+                primaryBtn.innerText = "ĐỒNG Ý NỘP";
+                primaryBtn.className = "btn-gold px-5 py-2.5 rounded-xl font-bold text-sm shadow-lg flex-1";
+                cancelBtn.innerText = "HỦY BỎ";
+                cancelBtn.classList.remove('hidden');
+                cancelBtn.className = "bg-navy-800 hover:bg-navy-700 text-blue-200 border border-navy-600 px-5 py-2.5 rounded-xl font-bold text-sm transition-all flex-1";
+                iconBox.className = "w-14 h-14 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center text-2xl mx-auto border border-emerald-400";
+                iconElem.className = "fa-solid fa-file-circle-check";
+            } else {
+                primaryBtn.innerText = "ĐÃ HIỂU";
+                primaryBtn.className = "btn-gold w-full py-2.5 rounded-xl font-bold text-sm";
+                cancelBtn.classList.add('hidden');
+                iconBox.className = "w-14 h-14 bg-amber-500/20 text-gold-400 rounded-full flex items-center justify-center text-2xl mx-auto border border-gold-400";
+                iconElem.className = "fa-solid fa-lock";
+            }
+
+            document.getElementById('custom-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('custom-modal').classList.add('hidden');
+        }
+
+        // MODE SELECTION LOGIC
+        function selectMode(mode) {
+            const config = EXAM_OPEN_CONFIG[mode];
+            
+            if (!config || !config.isOpen) {
+                const subjectNames = {
+                    'TV': 'TIẾNG VIỆT',
+                    'TOAN': 'TOÁN HỌC',
+                    'TA': 'TIẾNG ANH',
+                    'ALL': 'TỔNG HỢP 3 MÔN'
+                };
+                showModal("THÔNG BÁO MỞ ĐỀ", `CHƯA ĐẾN THỜI GIAN MỞ ĐỀ CỦA BÀI THI <b>${subjectNames[mode]}</b>.<br><span class="text-xs text-blue-300 mt-2 block">Thời gian mở đề dự kiến: ${config.timeString}</span>`);
+                return;
+            }
+
+            selectedMode = mode;
+
+            document.querySelectorAll('.mode-card').forEach(card => {
+                card.classList.remove('ring-4', 'ring-gold-400', 'border-gold-400');
+            });
+
+            const selectedCard = document.getElementById(`card-mode-${mode}`);
+            if (selectedCard) {
+                selectedCard.classList.add('ring-4', 'ring-gold-400', 'border-gold-400');
+            }
+
+            const btnStart = document.getElementById('btn-start-exam');
+            btnStart.disabled = false;
+            btnStart.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+
+        // START EXAM LOGIC
+        function startExam() {
+            if (!selectedMode) return;
+
+            tv10SelectedOrder = [];
+
+            let rawQuestions = [];
+            if (selectedMode === 'TV') rawQuestions = [...QUESTION_BANK.TV];
+            else if (selectedMode === 'TOAN') rawQuestions = [...QUESTION_BANK.TOAN];
+            else if (selectedMode === 'TA') rawQuestions = [...QUESTION_BANK.TA];
+            else if (selectedMode === 'ALL') {
+                rawQuestions = [
+                    ...QUESTION_BANK.TV,
+                    ...QUESTION_BANK.TOAN,
+                    ...QUESTION_BANK.TA
+                ];
+            }
+
+            activeQuestions = rawQuestions.map(q => {
+                const processed = JSON.parse(JSON.stringify(q));
+                if (processed.type === 'MCQ') {
+                    const shuffledTexts = shuffleArray(processed.options.map(o => o.text));
+                    const labels = ['A', 'B', 'C', 'D'];
+                    processed.displayOptions = labels.map((label, idx) => {
+                        const optionText = shuffledTexts[idx];
+                        const originalObj = processed.options.find(o => o.text === optionText);
+                        const isCorrectOption = (originalObj.key === processed.correctKey);
+                        return {
+                            label: label,
+                            text: optionText,
+                            isCorrect: isCorrectOption
+                        };
+                    });
+                }
+                return processed;
+            });
+
+            timeRemainingSeconds = (selectedMode === 'ALL') ? 120 * 60 : 40 * 60;
+            startTimeObj = new Date();
+
+            renderExamQuestions();
+
+            document.getElementById('screen-dashboard').classList.add('hidden');
+            document.getElementById('screen-exam').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            runTimer();
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        }
+
+        // TIMER COUNTDOWN LOGIC
+        function runTimer() {
+            updateTimerDisplay();
+            examTimer = setInterval(() => {
+                timeRemainingSeconds--;
+                updateTimerDisplay();
+                if (timeRemainingSeconds <= 0) {
+                    clearInterval(examTimer);
+                    showModal("HẾT GIỜ LÀM BÀI", "Đã hết thời gian làm bài! Hệ thống đang tự động nộp bài và chấm điểm.");
+                    setTimeout(() => {
+                        closeModal();
+                        submitExam();
+                    }, 2000);
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const h = Math.floor(timeRemainingSeconds / 3600);
+            const m = Math.floor((timeRemainingSeconds % 3600) / 60);
+            const s = timeRemainingSeconds % 60;
+            document.getElementById('timer-display').innerText = 
+                `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        }
+
+        // INTERACTIVE REORDER LOGIC FOR QUESTION 10
+        function handleSentenceToggle(sentenceId) {
+            const index = tv10SelectedOrder.indexOf(sentenceId);
+            if (index > -1) {
+                tv10SelectedOrder.splice(index, 1);
+            } else {
+                tv10SelectedOrder.push(sentenceId);
+            }
+            updateReorderUI();
+        }
+
+        function moveSentenceInOrder(sentenceId, direction) {
+            const index = tv10SelectedOrder.indexOf(sentenceId);
+            if (index < 0) return;
+            const newIndex = index + direction;
+            if (newIndex >= 0 && newIndex < tv10SelectedOrder.length) {
+                const temp = tv10SelectedOrder[index];
+                tv10SelectedOrder[index] = tv10SelectedOrder[newIndex];
+                tv10SelectedOrder[newIndex] = temp;
+                updateReorderUI();
+            }
+        }
+
+        function updateReorderUI() {
+            const qObj = QUESTION_BANK.TV.find(q => q.id === 'TV_10');
+            if (!qObj) return;
+
+            const poolContainer = document.getElementById('tv10-pool-container');
+            if (poolContainer) {
+                poolContainer.innerHTML = '';
+                qObj.sentencePool.forEach(item => {
+                    const isSelected = tv10SelectedOrder.includes(item.id);
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.onclick = () => handleSentenceToggle(item.id);
+                    btn.className = `w-full text-left p-3 rounded-xl border text-sm md:text-base transition-all flex justify-between items-center ${
+                        isSelected 
+                        ? 'bg-navy-900/40 border-navy-700 text-blue-300/50 line-through cursor-pointer hover:bg-navy-800/40' 
+                        : 'bg-navy-900 border-navy-600 text-white hover:border-gold-400 hover:bg-navy-800 font-medium'
+                    }`;
+                    btn.innerHTML = `<span>${item.text}</span>
+                        <span class="text-xs px-2 py-1 rounded ${isSelected ? 'bg-navy-800 text-blue-400' : 'bg-gold-400 text-navy-900 font-bold'}">${isSelected ? 'Đã chọn' : '+ Chọn câu này'}</span>`;
+                    poolContainer.appendChild(btn);
+                });
+            }
+
+            const selectedContainer = document.getElementById('tv10-selected-container');
+            const previewTextElem = document.getElementById('tv10-preview-text');
+            const hiddenInput = document.getElementById('tv10-hidden-input');
+
+            if (selectedContainer) {
+                selectedContainer.innerHTML = '';
+                if (tv10SelectedOrder.length === 0) {
+                    selectedContainer.innerHTML = `<p class="text-xs text-blue-300/70 italic text-center py-4">Chưa chọn câu nào. Nhấp vào các câu ở danh sách bên trên để chọn xếp theo thứ tự.</p>`;
+                } else {
+                    tv10SelectedOrder.forEach((id, idx) => {
+                        const sObj = qObj.sentencePool.find(s => s.id === id);
+                        const row = document.createElement('div');
+                        row.className = 'flex items-center justify-between bg-navy-900 p-3 rounded-xl border border-gold-500/40 gap-2';
+                        row.innerHTML = `
+                            <div class="flex items-center gap-2 flex-grow">
+                                <span class="w-6 h-6 rounded-full bg-gold-400 text-navy-900 font-extrabold text-xs flex items-center justify-center shrink-0">${idx + 1}</span>
+                                <span class="text-sm font-semibold text-white">${sObj.text}</span>
+                            </div>
+                            <div class="flex items-center gap-1 shrink-0">
+                                <button type="button" onclick="moveSentenceInOrder('${id}', -1)" ${idx === 0 ? 'disabled class="opacity-30 p-1.5"' : 'class="p-1.5 text-gold-400 hover:text-white"'}>
+                                    <i class="fa-solid fa-arrow-up text-xs"></i>
+                                </button>
+                                <button type="button" onclick="moveSentenceInOrder('${id}', 1)" ${idx === tv10SelectedOrder.length - 1 ? 'disabled class="opacity-30 p-1.5"' : 'class="p-1.5 text-gold-400 hover:text-white"'}>
+                                    <i class="fa-solid fa-arrow-down text-xs"></i>
+                                </button>
+                                <button type="button" onclick="handleSentenceToggle('${id}')" class="p-1.5 text-rose-400 hover:text-rose-300 ml-1">
+                                    <i class="fa-solid fa-xmark text-sm"></i>
+                                </button>
+                            </div>
+                        `;
+                        selectedContainer.appendChild(row);
+                    });
+                }
+            }
+
+            if (previewTextElem) {
+                if (tv10SelectedOrder.length === 0) {
+                    previewTextElem.innerText = '(Đoạn văn hoàn chỉnh sẽ tự động cập nhật khi bạn chọn câu)';
+                    previewTextElem.className = 'text-xs text-blue-300/50 italic';
+                } else {
+                    const fullText = tv10SelectedOrder.map(id => {
+                        const s = qObj.sentencePool.find(item => item.id === id);
+                        return s.text.replace(/^[a-z]\)\s*/, '');
+                    }).join(' ');
+                    previewTextElem.innerText = fullText;
+                    previewTextElem.className = 'text-sm md:text-base text-blue-50 leading-relaxed font-serif';
+                }
+            }
+
+            if (hiddenInput) {
+                hiddenInput.value = tv10SelectedOrder.join('-');
+            }
+        }
+
+        // RENDER QUESTIONS FORM
+        function renderExamQuestions() {
+            const form = document.getElementById('exam-form');
+            form.innerHTML = '';
+
+            let currentSection = '';
+
+            activeQuestions.forEach((q, index) => {
+                if (q.section !== currentSection) {
+                    currentSection = q.section;
+                    const sectionHeader = document.createElement('div');
+                    sectionHeader.className = 'bg-navy-800/90 text-gold-400 font-bold px-4 py-3 rounded-xl border-l-4 border-gold-400 shadow-md text-base md:text-lg mt-6';
+                    sectionHeader.innerHTML = `<i class="fa-solid fa-bookmark mr-2"></i> ${currentSection}`;
+                    form.appendChild(sectionHeader);
+                }
+
+                if (q.readingText) {
+                    const readingBox = document.createElement('div');
+                    readingBox.className = 'bg-navy-900/80 p-5 rounded-2xl border border-blue-500/30 text-blue-50 leading-relaxed text-sm md:text-base';
+                    readingBox.innerHTML = q.readingText;
+                    form.appendChild(readingBox);
+                }
+
+                const qCard = document.createElement('div');
+                qCard.className = 'glass-card p-5 md:p-6 rounded-2xl border border-navy-700 space-y-4';
+                
+                let qHTML = `<div class="font-bold text-white text-base md:text-lg flex items-start gap-2">
+                                <span class="bg-navy-700 text-gold-400 px-2.5 py-1 rounded-lg text-xs font-mono shrink-0">${q.subject}</span>
+                                <div>${q.question}</div>
+                            </div>`;
+
+                if (q.type === 'MCQ') {
+                    qHTML += `<div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">`;
+                    q.displayOptions.forEach((opt) => {
+                        const inputId = `${q.id}_opt_${opt.label}`;
+                        qHTML += `
+                            <div class="custom-radio">
+                                <input type="radio" id="${inputId}" name="${q.id}" value="${opt.label}" class="hidden">
+                                <label for="${inputId}" class="flex items-center gap-3 p-3.5 rounded-xl border border-navy-600 bg-navy-900/60 hover:bg-navy-800 cursor-pointer transition-all text-sm md:text-base text-blue-100">
+                                    <span class="w-7 h-7 rounded-full border border-gold-400/50 flex items-center justify-center font-bold text-gold-400 text-xs shrink-0">${opt.label}</span>
+                                    <span>${opt.text}</span>
+                                </label>
+                            </div>`;
+                    });
+                    qHTML += `</div>`;
+                } else if (q.type === 'REORDER_PARAGRAPH') {
+                    qHTML += `
+                        <input type="hidden" name="${q.id}" id="tv10-hidden-input" value="">
+                        
+                        <div class="space-y-4 pt-2">
+                            <div>
+                                <h4 class="text-xs font-bold text-gold-400 uppercase tracking-wider mb-2">DANH SÁCH CÁC CÂU VĂN (Nhấp vào câu để chọn):</h4>
+                                <div id="tv10-pool-container" class="space-y-2"></div>
+                            </div>
+
+                            <div class="border-t border-navy-700 pt-3">
+                                <h4 class="text-xs font-bold text-gold-400 uppercase tracking-wider mb-2">THỨ TỰ SẮP XẾP ĐOẠN VĂN CỦA BẠN:</h4>
+                                <div id="tv10-selected-container" class="space-y-2 bg-navy-950/60 p-3 rounded-2xl border border-navy-700 min-h-[100px]"></div>
+                            </div>
+
+                            <div class="border-t border-navy-700 pt-3">
+                                <h4 class="text-xs font-bold text-blue-300 uppercase tracking-wider mb-2"><i class="fa-solid fa-eye mr-1"></i> XEM TRƯỚC ĐOẠN VĂN HOÀN CHỈNH:</h4>
+                                <div class="bg-navy-900/90 p-4 rounded-xl border border-blue-500/30">
+                                    <p id="tv10-preview-text" class="text-xs text-blue-300/50 italic">(Đoạn văn hoàn chỉnh sẽ tự động cập nhật khi bạn chọn câu)</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else if (q.type === 'TRUE_FALSE') {
+                    qHTML += `<div class="flex gap-4 pt-2">
+                        <label class="flex items-center gap-2 cursor-pointer bg-navy-900/60 border border-navy-600 px-5 py-2.5 rounded-xl text-sm font-semibold hover:border-gold-400">
+                            <input type="radio" name="${q.id}" value="Đúng" class="accent-gold-400"> Đúng
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer bg-navy-900/60 border border-navy-600 px-5 py-2.5 rounded-xl text-sm font-semibold hover:border-gold-400">
+                            <input type="radio" name="${q.id}" value="Sai" class="accent-gold-400"> Sai
+                        </label>
+                    </div>`;
+                } else if (q.type === 'NUMBER_INPUT') {
+                    qHTML += `<div class="pt-2">
+                        <input type="number" name="${q.id}" placeholder="Nhập số nguyên..." class="bg-navy-900 border border-navy-600 rounded-xl px-4 py-2.5 text-white font-mono w-full max-w-xs focus:border-gold-400 focus:outline-none">
+                    </div>`;
+                } else if (q.type === 'CATEGORIZATION') {
+                    qHTML += `<div class="space-y-3 pt-2">`;
+                    q.items.forEach((item) => {
+                        qHTML += `<div class="flex flex-col sm:flex-row sm:items-center justify-between bg-navy-900/60 p-3 rounded-xl border border-navy-700 gap-2">
+                            <span class="font-medium text-gold-400 text-sm">"${item}"</span>
+                            <select name="${q.id}_item_${item}" class="bg-navy-800 border border-navy-600 text-white rounded-lg px-3 py-1.5 text-xs focus:border-gold-400">
+                                <option value="">-- Chọn nhóm --</option>
+                                ${q.categories.map(c => `<option value="${c}">${c}</option>`).join('')}
+                            </select>
+                        </div>`;
+                    });
+                    qHTML += `</div>`;
+                } else if (q.type === 'MULTI_NUMBER') {
+                    qHTML += `<div class="space-y-3 pt-2">`;
+                    q.subQuestions.forEach((sub) => {
+                        qHTML += `<div class="flex flex-col sm:flex-row sm:items-center justify-between bg-navy-900/60 p-3 rounded-xl border border-navy-700 gap-2">
+                            <span class="text-sm text-blue-100">${sub.label}</span>
+                            <input type="number" name="${sub.id}" placeholder="Điền số..." class="bg-navy-800 border border-navy-600 rounded-lg px-3 py-1 text-white font-mono w-28 text-sm focus:border-gold-400">
+                        </div>`;
+                    });
+                    qHTML += `</div>`;
+                } else if (q.type === 'SPELLING_SELECT') {
+                    qHTML += `<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">`;
+                    q.items.forEach((item) => {
+                        qHTML += `<div class="flex items-center justify-between bg-navy-900/60 p-3 rounded-xl border border-navy-700">
+                            <span class="text-sm font-medium text-blue-100">${item.text}</span>
+                            <select name="${item.id}" class="bg-navy-800 border border-navy-600 text-gold-400 font-bold rounded-lg px-3 py-1 text-xs">
+                                <option value="">-- Chọn --</option>
+                                ${item.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                            </select>
+                        </div>`;
+                    });
+                    qHTML += `</div>`;
+                } else if (q.type === 'TEXT_INPUT_MULTI') {
+                    qHTML += `<div class="space-y-3 pt-2">`;
+                    q.subQuestions.forEach((sub) => {
+                        qHTML += `<div class="flex flex-col sm:flex-row sm:items-center justify-between bg-navy-900/60 p-3 rounded-xl border border-navy-700 gap-2">
+                            <span class="text-sm text-blue-100">${sub.label}</span>
+                            <input type="text" name="${sub.id}" placeholder="Viết từ tiếng Anh..." class="bg-navy-800 border border-navy-600 rounded-lg px-3 py-1.5 text-white font-semibold text-sm w-full sm:w-48 focus:border-gold-400">
+                        </div>`;
+                    });
+                    qHTML += `</div>`;
+                } else if (q.type === 'MATCHING_SELECT') {
+                    qHTML += `<div class="space-y-3 pt-2">`;
+                    q.pairs.forEach((pair) => {
+                        qHTML += `<div class="flex flex-col sm:flex-row sm:items-center justify-between bg-navy-900/60 p-3 rounded-xl border border-navy-700 gap-2">
+                            <span class="text-sm text-blue-100 font-medium">${pair.textA}</span>
+                            <select name="${pair.id}" class="bg-navy-800 border border-navy-600 text-gold-400 rounded-lg px-3 py-1.5 text-xs font-semibold">
+                                <option value="">-- Chọn đáp án Cột B --</option>
+                                ${q.pairs.map(p => `<option value="${p.correct}">${p.textB}</option>`).join('')}
+                            </select>
+                        </div>`;
+                    });
+                    qHTML += `</div>`;
+                } else if (q.type === 'DIALOGUE_SELECT') {
+                    qHTML += `<div class="space-y-3 pt-2">`;
+                    q.subQuestions.forEach((sub) => {
+                        qHTML += `<div class="flex items-center justify-between bg-navy-900/60 p-3 rounded-xl border border-navy-700">
+                            <span class="text-sm text-blue-100">${sub.label}</span>
+                            <select name="${sub.id}" class="bg-navy-800 border border-navy-600 text-gold-400 font-bold rounded-lg px-3 py-1.5 text-xs">
+                                <option value="">-- Chọn từ --</option>
+                                ${q.optionsList.map(o => `<option value="${o}">${o}</option>`).join('')}
+                            </select>
+                        </div>`;
+                    });
+                    qHTML += `</div>`;
+                } else if (q.type === 'ERROR_CORRECTION_SELECT') {
+                    qHTML += `<div class="space-y-3 pt-2">`;
+                    q.items.forEach((item) => {
+                        qHTML += `<div class="flex flex-col sm:flex-row sm:items-center justify-between bg-navy-900/60 p-3 rounded-xl border border-navy-700 gap-2">
+                            <span class="text-sm text-blue-100 font-medium">${item.text}</span>
+                            <select name="${item.id}" class="bg-navy-800 border border-navy-600 text-gold-400 rounded-lg px-3 py-1.5 text-xs font-bold">
+                                <option value="">-- Chọn cách sửa --</option>
+                                ${item.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                            </select>
+                        </div>`;
+                    });
+                    qHTML += `</div>`;
+                } else if (q.type === 'MCQ_MULTI') {
+                    qHTML += `<div class="space-y-4 pt-2">`;
+                    q.items.forEach((item) => {
+                        qHTML += `<div class="bg-navy-900/60 p-4 rounded-xl border border-navy-700 space-y-2">
+                            <p class="text-sm font-semibold text-gold-400">${item.prompt}</p>
+                            <div class="space-y-1.5">
+                                ${item.options.map((optStr, idx) => `
+                                    <label class="flex items-center gap-2 cursor-pointer text-xs md:text-sm text-blue-100 p-2 rounded hover:bg-navy-800">
+                                        <input type="radio" name="${item.id}" value="${optStr}" class="accent-gold-400"> ${optStr}
+                                    </label>
+                                `).join('')}
+                            </div>
+                        </div>`;
+                    });
+                    qHTML += `</div>`;
+                }
+
+                qCard.innerHTML = qHTML;
+                form.appendChild(qCard);
+            });
+
+            if (activeQuestions.some(q => q.id === 'TV_10')) {
+                updateReorderUI();
+            }
+        }
+
+        // CONFIRM SUBMIT MODAL WITH CANCEL BUTTON
+        function confirmSubmit() {
+            showModal(
+                "XÁC NHẬN NỘP BÀI", 
+                `Bạn có chắc chắn muốn nộp bài thi ngay bây giờ?<br><span class="text-xs text-blue-300 mt-1 block">Sau khi nộp, hệ thống sẽ tính điểm và hiển thị đáp án chi tiết.</span>`,
+                true
+            );
+            
+            const primaryBtn = document.getElementById('modal-btn-primary');
+            primaryBtn.onclick = function() {
+                closeModal();
+                submitExam();
+            };
+        }
+
+        // SUBMIT AND GRADING LOGIC
+        function submitExam() {
+            clearInterval(examTimer);
+            endTimeObj = new Date();
+
+            let totalEarnedPoints = 0;
+            let totalMaxPossiblePoints = 0;
+            const reviewItems = [];
+
+            const form = document.getElementById('exam-form');
+            const formData = new FormData(form);
+
+            activeQuestions.forEach((q) => {
+                totalMaxPossiblePoints += q.points;
+                let userEarned = 0;
+                let userAnswersSummary = "";
+                let isCorrect = false;
+
+                if (q.type === 'MCQ') {
+                    const selectedLabel = formData.get(q.id);
+                    if (selectedLabel) {
+                        const chosenOpt = q.displayOptions.find(o => o.label === selectedLabel);
+                        userAnswersSummary = `Chọn [${selectedLabel}]: ${chosenOpt ? chosenOpt.text : ''}`;
+                        if (chosenOpt && chosenOpt.isCorrect) {
+                            userEarned = q.points;
+                            isCorrect = true;
+                        }
+                    } else {
+                        userAnswersSummary = 'Chưa chọn đáp án';
+                    }
+                } else if (q.type === 'REORDER_PARAGRAPH') {
+                    const val = formData.get(q.id);
+                    const userSeq = val ? val.split('-').filter(Boolean) : [];
+                    userAnswersSummary = userSeq.length > 0 ? `Thứ tự đã ghép: ${userSeq.join(' – ')}` : 'Chưa chọn sắp xếp câu nào';
+                    
+                    let correctCount = 0;
+                    userSeq.forEach((item, idx) => {
+                        if (q.correctSequence[idx] === item) {
+                            correctCount++;
+                        }
+                    });
+
+                    let percentage = 0;
+                    if (correctCount === 1) percentage = 0.10;
+                    else if (correctCount === 2) percentage = 0.20;
+                    else if (correctCount === 3) percentage = 0.30;
+                    else if (correctCount === 4) percentage = 0.50;
+                    else if (correctCount === 5) percentage = 0.75;
+                    else if (correctCount === 6) percentage = 0.80;
+                    else if (correctCount === 7) percentage = 1.00;
+
+                    userEarned = q.points * percentage;
+                    isCorrect = (correctCount === 7);
+                    userAnswersSummary += ` (${correctCount}/7 câu ghép đúng vị trí)`;
+                } else if (q.type === 'TRUE_FALSE') {
+                    const val = formData.get(q.id);
+                    userAnswersSummary = val ? `Chọn: ${val}` : 'Chưa chọn';
+                    if (val === q.correctValue) {
+                        userEarned = q.points;
+                        isCorrect = true;
+                    }
+                } else if (q.type === 'NUMBER_INPUT') {
+                    const numVal = formData.get(q.id);
+                    userAnswersSummary = numVal ? `Nhập: ${numVal}` : 'Chưa nhập';
+                    if (parseInt(numVal) === q.correctNumber) {
+                        userEarned = q.points;
+                        isCorrect = true;
+                    }
+                } else if (q.type === 'CATEGORIZATION') {
+                    let correctCount = 0;
+                    const totalItems = q.items.length;
+                    const details = [];
+                    q.items.forEach(item => {
+                        const userCat = formData.get(`${q.id}_item_${item}`);
+                        const correctCat = q.correctMapping[item];
+                        if (userCat === correctCat) correctCount++;
+                        details.push(`${item} → ${userCat || 'Chưa xếp'}`);
+                    });
+                    userAnswersSummary = details.join('; ');
+                    userEarned = (correctCount / totalItems) * q.points;
+                    isCorrect = (correctCount === totalItems);
+                } else if (q.type === 'MULTI_NUMBER') {
+                    let correctCount = 0;
+                    const details = [];
+                    q.subQuestions.forEach(sub => {
+                        const val = parseInt(formData.get(sub.id));
+                        if (val === sub.correct) correctCount++;
+                        details.push(`${sub.label}: ${isNaN(val) ? 'Chưa điền' : val}`);
+                    });
+                    userAnswersSummary = details.join(' | ');
+                    userEarned = (correctCount / q.subQuestions.length) * q.points;
+                    isCorrect = (correctCount === q.subQuestions.length);
+                } else if (q.type === 'SPELLING_SELECT') {
+                    let correctCount = 0;
+                    const details = [];
+                    q.items.forEach(item => {
+                        const val = formData.get(item.id);
+                        if (val === item.correct) correctCount++;
+                        details.push(`${item.text}: ${val || 'Chưa chọn'}`);
+                    });
+                    userAnswersSummary = details.join(' ; ');
+                    userEarned = (correctCount / q.items.length) * q.points;
+                    isCorrect = (correctCount === q.items.length);
+                } else if (q.type === 'TEXT_INPUT_MULTI') {
+                    let correctCount = 0;
+                    const details = [];
+                    q.subQuestions.forEach(sub => {
+                        const val = (formData.get(sub.id) || '').trim().toLowerCase();
+                        if (val === sub.correct.toLowerCase()) correctCount++;
+                        details.push(`${sub.label} ${val || 'Chưa điền'}`);
+                    });
+                    userAnswersSummary = details.join(' | ');
+                    userEarned = (correctCount / q.subQuestions.length) * q.points;
+                    isCorrect = (correctCount === q.subQuestions.length);
+                } else if (q.type === 'MATCHING_SELECT') {
+                    let correctCount = 0;
+                    const details = [];
+                    q.pairs.forEach(pair => {
+                        const val = formData.get(pair.id);
+                        if (val === pair.correct) correctCount++;
+                        details.push(`${pair.textA.substring(0, 15)}... → ${val || 'Chưa nối'}`);
+                    });
+                    userAnswersSummary = details.join(' ; ');
+                    userEarned = (correctCount / q.pairs.length) * q.points;
+                    isCorrect = (correctCount === q.pairs.length);
+                } else if (q.type === 'DIALOGUE_SELECT') {
+                    let correctCount = 0;
+                    const details = [];
+                    q.subQuestions.forEach(sub => {
+                        const val = formData.get(sub.id);
+                        if (val === sub.correct) correctCount++;
+                        details.push(`${sub.label} ${val || 'Chưa điền'}`);
+                    });
+                    userAnswersSummary = details.join(' ; ');
+                    userEarned = (correctCount / q.subQuestions.length) * q.points;
+                    isCorrect = (correctCount === q.subQuestions.length);
+                } else if (q.type === 'ERROR_CORRECTION_SELECT') {
+                    let correctCount = 0;
+                    const details = [];
+                    q.items.forEach(item => {
+                        const val = formData.get(item.id);
+                        if (val === item.correct) correctCount++;
+                        details.push(`${item.text.substring(0, 15)}... → ${val || 'Chưa chọn'}`);
+                    });
+                    userAnswersSummary = details.join(' ; ');
+                    userEarned = (correctCount / q.items.length) * q.points;
+                    isCorrect = (correctCount === q.items.length);
+                } else if (q.type === 'MCQ_MULTI') {
+                    let correctCount = 0;
+                    const details = [];
+                    q.items.forEach(item => {
+                        const val = formData.get(item.id);
+                        if (val === item.correct) correctCount++;
+                        details.push(`${item.prompt.substring(0, 15)}... → ${val || 'Chưa chọn'}`);
+                    });
+                    userAnswersSummary = details.join(' ; ');
+                    userEarned = (correctCount / q.items.length) * q.points;
+                    isCorrect = (correctCount === q.items.length);
+                }
+
+                totalEarnedPoints += userEarned;
+
+                reviewItems.push({
+                    subject: q.subject,
+                    questionText: q.question,
+                    userAnswer: userAnswersSummary,
+                    isCorrect: isCorrect,
+                    pointsEarned: userEarned,
+                    maxPoints: q.points,
+                    explanation: q.explanation
+                });
+            });
+
+            const scaledScore = (totalMaxPossiblePoints > 0) ? (totalEarnedPoints / totalMaxPossiblePoints) * 10 : 0;
+
+            renderResultsView(scaledScore, reviewItems);
+        }
+
+        // RENDER RESULTS VIEW
+        function renderResultsView(scaledScore, reviewItems) {
+            document.getElementById('screen-exam').classList.add('hidden');
+            document.getElementById('screen-results').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            const formatTime = (date) => date ? date.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' }) : '--:--';
+            document.getElementById('res-start-time').innerText = formatTime(startTimeObj);
+            document.getElementById('res-end-time').innerText = formatTime(endTimeObj);
+
+            const durationSec = Math.round((endTimeObj - startTimeObj) / 1000);
+            const durMins = Math.floor(durationSec / 60);
+            const durSecs = durationSec % 60;
+            document.getElementById('res-duration').innerText = `${durMins} phút ${durSecs} giây`;
+
+            const scoreDisplay = document.getElementById('res-score-number');
+            const evalDisplay = document.getElementById('res-eval-text');
+            const formattedScore = scaledScore.toFixed(1);
+            scoreDisplay.innerText = `${formattedScore} / 10`;
+
+            if (scaledScore >= 8.5) {
+                evalDisplay.innerText = "🎉 Xuất sắc! Cẩm Tiên nắm rất vững kiến thức cả 3 môn!";
+                evalDisplay.className = "text-sm font-bold text-emerald-400 mt-2";
+            } else if (scaledScore >= 7.0) {
+                evalDisplay.innerText = "🌟 Giỏi lắm! Cẩm Tiên hoàn thành bài thi rất tốt!";
+                evalDisplay.className = "text-sm font-bold text-gold-400 mt-2";
+            } else if (scaledScore >= 5.0) {
+                evalDisplay.innerText = "👍 Khá tốt! Cẩm Tiên hãy xem kĩ lời giải các câu sai để rút kinh nghiệm nhé!";
+                evalDisplay.className = "text-sm font-bold text-blue-300 mt-2";
+            } else {
+                evalDisplay.innerText = "💪 Cố gắng lên nhé! Cẩm Tiên ôn luyện thêm các phần kiến thức còn hổng nhé!";
+                evalDisplay.className = "text-sm font-bold text-rose-400 mt-2";
+            }
+
+            const reviewContainer = document.getElementById('review-container');
+            reviewContainer.innerHTML = '';
+
+            reviewItems.forEach((item, index) => {
+                const box = document.createElement('div');
+                const statusBg = item.isCorrect ? 'border-emerald-500/50 bg-emerald-950/20' : 'border-rose-500/50 bg-rose-950/20';
+                const statusBadge = item.isCorrect ? 
+                    `<span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-3 py-1 rounded-full text-xs font-bold"><i class="fa-solid fa-check mr-1"></i> ĐÚNG (+${item.pointsEarned.toFixed(2)}đ)</span>` : 
+                    `<span class="bg-rose-500/20 text-rose-400 border border-rose-500/40 px-3 py-1 rounded-full text-xs font-bold"><i class="fa-solid fa-xmark mr-1"></i> ĐẠT ${item.pointsEarned.toFixed(2)} / ${item.maxPoints.toFixed(2)}đ</span>`;
+
+                box.className = `glass-card p-5 rounded-2xl border ${statusBg} space-y-3`;
+                box.innerHTML = `
+                    <div class="flex flex-wrap justify-between items-center gap-2 border-b border-navy-700 pb-2">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs bg-navy-800 text-gold-400 font-bold px-2.5 py-0.5 rounded border border-gold-400/30">Câu ${index + 1}</span>
+                            <span class="text-xs text-blue-200 font-semibold">[Môn ${item.subject}]</span>
+                        </div>
+                        ${statusBadge}
+                    </div>
+                    <div class="text-sm md:text-base font-semibold text-white">${item.questionText}</div>
+                    <div class="text-xs md:text-sm bg-navy-900/80 p-3 rounded-xl border border-navy-700">
+                        <span class="text-blue-300 block mb-1">Thí sinh chọn:</span>
+                        <div class="font-bold ${item.isCorrect ? 'text-emerald-400' : 'text-rose-300'}">${item.userAnswer}</div>
+                    </div>
+                    <div class="text-xs md:text-sm bg-blue-950/40 p-3.5 rounded-xl border border-blue-500/30 text-blue-100 space-y-1">
+                        <span class="text-gold-400 font-bold block"><i class="fa-solid fa-lightbulb mr-1"></i> LỜI GIẢI CHI TIẾT & ĐÁP ÁN ĐÚNG:</span>
+                        <p class="whitespace-pre-line leading-relaxed text-blue-100">${item.explanation}</p>
+                    </div>
+                `;
+                reviewContainer.appendChild(box);
+            });
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise();
+            }
+        }
+
+        // RESET TO HOME SCREEN
+        function resetApp() {
+            selectedMode = null;
+            tv10SelectedOrder = [];
+            clearInterval(examTimer);
+            document.querySelectorAll('.mode-card').forEach(card => card.classList.remove('ring-4', 'ring-gold-400', 'border-gold-400'));
+            const btnStart = document.getElementById('btn-start-exam');
+            btnStart.disabled = true;
+            btnStart.classList.add('opacity-50', 'cursor-not-allowed');
+
+            document.getElementById('screen-results').classList.add('hidden');
+            document.getElementById('screen-exam').classList.add('hidden');
+            document.getElementById('screen-dashboard').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
