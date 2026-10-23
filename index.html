@@ -351,23 +351,34 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // CONFIGURATION FOR OPEN TIME LOCK
+        // CẤU HÌNH THỜI GIAN MỞ ĐỀ (Năm, Tháng - 1, Ngày, Giờ, Phút, Giây)
+        // Ví dụ: new Date(2026, 9, 23, 8, 0, 0) nghĩa là 08:00 ngày 23/10/2026
         const EXAM_OPEN_CONFIG = {
-            'TV': { isOpen: true, timeString: "08:00 - 24/10/2026" },
-            'TOAN': { isOpen: true, timeString: "08:00 - 24/10/2026" },
-            'TA': { isOpen: true, timeString: "08:00 - 24/10/2026" },
-            'ALL': { isOpen: true, timeString: "08:00 - 23/10/2026" }
+            'TV': { 
+                openTime: new Date(2026, 9, 24, 15, 0, 0), 
+                timeString: "15:00 - 24/10/2026" 
+            },
+            'TOAN': { 
+                  openTime: new Date(2026, 9, 24, 15, 0, 0), 
+                timeString: "15:00 - 24/10/2026" 
+            },
+            'TA': { 
+                 openTime: new Date(2026, 9, 24, 15, 0, 0), 
+                timeString: "15:00 - 24/10/2026" 
+            },
+            'ALL': { 
+                 openTime: new Date(2026, 9, 24, 0, 0, 0), 
+                timeString: "00:00 - 24/10/2026" 
+            }
         };
 
         // GLOBAL APP STATE
-        let selectedMode = null; // 'TV', 'TOAN', 'TA', 'ALL'
+        let selectedMode = null;
         let examTimer = null;
         let timeRemainingSeconds = 0;
         let startTimeObj = null;
         let endTimeObj = null;
         let activeQuestions = [];
-
-        // Global State for Interactive Reorder Question (TV_10)
         let tv10SelectedOrder = [];
 
         // FULL QUESTION DATABASE
@@ -378,7 +389,7 @@
                     subject: 'TIẾNG VIỆT',
                     section: 'PHẦN I: KIỂM TRA ĐỌC VÀ LUYỆN TỪ VÀ CÂU - ĐỌC HIỂU VĂN BẢN',
                     readingText: `<b>MÙA THU VÀ NGÀY KHAI TRƯỜNG</b><br><br>Mùa thu về mang theo cái không khí mát lành, dịu nhẹ. Nhớ ngày nào nghỉ hè, sân trường còn vắng lặng, hàng cây phượng già im lùm đứng tựa ban công. Thế mà hôm nay, ngôi trường như bừng tỉnh sau một giấc ngủ dài. Tiếng cười nói ríu rít của các bạn học sinh làm xôn xao cả góc phố.<br><br>An tung tăng bước qua cổng trường trong bộ đồng phục mới tinh. Bạn cảm thấy mây trời hôm nay như xanh hơn, những giọt sương sớm long lanh trên kẽ lá như những viên ngọc nhỏ. Bàn tay ấm áp của cô giáo chủ nhiệm nắm lấy tay An, dắt bạn vào lớp học mới. An mỉm cười tự tin, lòng ngập tràn niềm vui và quyết tâm phấn đấu trong năm học lớp 3 này.<br><span class="text-xs text-blue-300 italic float-right">(Theo Khánh An)</span><div class="clear-both"></div>`,
-                    question: 'Câu 1 (Trắc nghiệm - 0,5 điểm): Ngôi trường được miêu tả như thế nào khi mùa thu về và học sinh đi học trở lại?',
+                    question: 'Câu 1 (Trắc nghiệm - 0,5 điểm): Ng ngôi trường được miêu tả như thế nào khi mùa thu về và học sinh đi học trở lại?',
                     type: 'MCQ',
                     points: 0.5,
                     options: [
@@ -436,7 +447,7 @@
                         { key: 'D', text: 'Trông chờ thầy cô và cha mẹ nhắc nhở rồi mới bắt đầu học bài.' }
                     ],
                     correctKey: 'B',
-                    explanation: '• ĐÁP ÁN ĐÚNG: B. Nụ cười "tự tin" và tâm trạng "ngập tràn niềm vui, quyết tâm phấn đấu" của An thể hiện tinh thần sẵn sàng, chủ động, lạc quan và có ý thức cố gắng vươn lên trong học tập.\n• CÁC PHƯƠNG ÁN SAI:\nA sai vì trái ngược với tinh thần tự tin;\nC sai vì bộ đồng phục chỉ là vẻ bề ngoài;\nD sai vì thể hiện thái độ thụ động, ỷ lại.'
+                    explanation: '• ĐÁP ÁN ĐÚNG: B. Nụ cười "tự tin" và tâm trạng "ngập tràn niềm vui, quyết tâm phấn đấu" của An thể hiện tinh thần sẵn sàng, chủ động, lạc quan và có ý thức cố gắng vươn lên trong học tập.'
                 },
                 {
                     id: 'TV_5',
@@ -457,13 +468,13 @@
                         'mát lành': 'Từ chỉ đặc điểm',
                         'ấm áp': 'Từ chỉ đặc điểm'
                     },
-                    explanation: '• Từ chỉ sự vật: ngôi trường, sân trường, giọt sương (0,25đ)\n• Từ chỉ hoạt động: bước, mỉm cười, tung tăng (0,25đ)\n• Từ chỉ đặc điểm: mát lành, ấm áp (0,25đ)'
+                    explanation: '• Từ chỉ sự vật: ngôi trường, sân trường, giọt sương\n• Từ chỉ hoạt động: bước, mỉm cười, tung tăng\n• Từ chỉ đặc điểm: mát lành, ấm áp'
                 },
                 {
                     id: 'TV_6_A',
                     subject: 'TIẾNG VIỆT',
                     section: 'LUYỆN TỪ VÀ CÂU & CHÍNH TẢ',
-                    question: 'Câu 6a (Biện pháp so sánh - 0,25 điểm): Trong các cách diễn đạt miêu tả tiếng hót chim sơn ca, câu nào sử dụng biện pháp tu từ so sánh giúp làm nổi bật sự trong trẻo, ngân nga và bay bổng của âm thanh?',
+                    question: 'Câu 6a (Biện pháp so sánh - 0,25 điểm): Trong các cách diễn đạt miêu tả tiếng hót chim sơn ca, câu nào sử dụng biện pháp tu từ so sánh?',
                     type: 'MCQ',
                     points: 0.25,
                     options: [
@@ -473,13 +484,13 @@
                         { key: 'D', text: 'Tiếng hót của chim sơn ca to và vang hơn cả tiếng gà gáy sáng.' }
                     ],
                     correctKey: 'C',
-                    explanation: 'Câu C sử dụng từ "như" để so sánh tiếng hót với tiếng đàn, gợi lên âm thanh trong trẻo, ngân nga và cao vút.'
+                    explanation: 'Câu C sử dụng từ "như" để so sánh tiếng hót với tiếng đàn.'
                 },
                 {
                     id: 'TV_6_B',
                     subject: 'TIẾNG VIỆT',
                     section: 'LUYỆN TỪ VÀ CÂU & CHÍNH TẢ',
-                    question: 'Câu 6b (Biện pháp so sánh - 0,25 điểm): Trong các cách diễn đạt miêu tả dòng sông mùa thu, câu nào sử dụng biện pháp tu từ so sánh giúp làm nổi bật sự phẳng lặng, xanh mát và êm đềm của mặt nước?',
+                    question: 'Câu 6b (Biện pháp so sánh - 0,25 điểm): Trong các cách diễn đạt miêu tả dòng sông mùa thu, câu nào sử dụng biện pháp tu từ so sánh?',
                     type: 'MCQ',
                     points: 0.25,
                     options: [
@@ -489,13 +500,13 @@
                         { key: 'D', text: 'Dòng sông mùa thu phẳng lặng và xanh mát hơn cả hồ nước trong làng.' }
                     ],
                     correctKey: 'B',
-                    explanation: 'Câu B sử dụng từ so sánh "tựa" kết hợp với hình ảnh gợi hình "một dải lụa mềm mại...".'
+                    explanation: 'Câu B sử dụng từ so sánh "tựa" với hình ảnh "một dải lụa mềm mại".'
                 },
                 {
                     id: 'TV_6_C',
                     subject: 'TIẾNG VIỆT',
                     section: 'LUYỆN TỪ VÀ CÂU & CHÍNH TẢ',
-                    question: 'Câu 6c (Biện pháp so sánh - 0,25 điểm): Trong các cách diễn đạt miêu tả mái tóc của bà, câu nào sử dụng biện pháp tu từ so sánh giúp làm nổi bật vẻ đẹp mịn màng, trắng xốp và hiền từ của người bà?',
+                    question: 'Câu 6c (Biện pháp so sánh - 0,25 điểm): Trong các cách diễn đạt miêu tả mái tóc của bà, câu nào sử dụng biện pháp tu từ so sánh?',
                     type: 'MCQ',
                     points: 0.25,
                     options: [
@@ -505,7 +516,7 @@
                         { key: 'D', text: 'Mái tóc của bà em trắng xốp hơn tóc của mẹ và các cô trong nhà.' }
                     ],
                     correctKey: 'B',
-                    explanation: 'Câu B sử dụng từ so sánh "như" và gắn liền với hình ảnh bồng bềnh "những đám mây nhỏ...".'
+                    explanation: 'Câu B sử dụng từ so sánh "như".'
                 },
                 {
                     id: 'TV_7',
@@ -519,7 +530,7 @@
                         { id: 'TV_7_2', label: 'Đoạn văn trên có bao nhiêu câu hỏi?', correct: 1 },
                         { id: 'TV_7_3', label: 'Đoạn văn trên có bao nhiêu câu kể?', correct: 1 }
                     ],
-                    explanation: '• 1 câu cảm: "Ôi, bầu trời mùa thu hôm nay mới trong xanh làm sao!"\n• 1 câu hỏi: "Mẹ có biết hôm nay ở lớp con được cô giáo khen không?"\n• 1 câu kể: "Con hứa sẽ luôn cố gắng chăm ngoan để bố mẹ vui lòng."'
+                    explanation: '• 1 câu cảm\n• 1 câu hỏi\n• 1 câu kể'
                 },
                 {
                     id: 'TV_8',
@@ -544,7 +555,7 @@
                     id: 'TV_9',
                     subject: 'TIẾNG VIỆT',
                     section: 'LUYỆN TỪ VÀ CÂU & CHÍNH TẢ',
-                    question: 'Câu 9 (Đặt câu - 0,5 điểm - Mức khó): Trong các câu dưới đây, câu nào vừa sử dụng hình ảnh so sánh gợi cảm xúc, vừa nói về thầy cô/mái trường và dùng dấu câu cuối câu phù hợp nhất?',
+                    question: 'Câu 9 (Đặt câu - 0,5 điểm): Trong các câu dưới đây, câu nào vừa sử dụng hình ảnh so sánh, vừa nói về thầy cô/mái trường và dùng dấu câu phù hợp nhất?',
                     type: 'MCQ',
                     points: 0.5,
                     options: [
@@ -554,7 +565,7 @@
                         { key: 'D', text: 'Ôi, cô giáo của em thật là dịu dàng và yêu thương học sinh biết bao.' }
                     ],
                     correctKey: 'B',
-                    explanation: '• Đáp án đúng: B (Có so sánh nghệ thuật "như dòng sông chở nặng phù sa...", đúng chủ đề thầy cô, kết thúc bằng dấu ! phù hợp).\n• Giải thích bẫy: Câu A từ "như" dùng để liệt kê ví dụ; Câu C so sánh tả thực khô khan; Câu D cảm xúc nhưng không có phép so sánh.'
+                    explanation: 'Đáp án đúng là B.'
                 },
                 {
                     id: 'TV_10',
@@ -573,7 +584,7 @@
                         { id: 'g', text: 'g) Thấy em rụt rè, cô giáo dịu dàng nắm tay và động viên em làm quen với các bạn.' },
                         { id: 'h', text: 'h) Khi bước vào lớp, em bỡ ngỡ vì xung quanh toàn là những gương mặt xa lạ.' }
                     ],
-                    explanation: '• Thứ tự ghép đoạn văn chuẩn: b – e – h – g – c – a – d (4,0 điểm).\n• Biểu điểm chi tiết:\n + Ghép đúng 1/7 câu: 0,4đ (10%)\n + Ghép đúng 2/7 câu: 0,8đ (20%)\n + Ghép đúng 3/7 câu: 1,2đ (30%)\n + Ghép đúng 4/7 câu: 2,0đ (50%)\n + Ghép đúng 5/7 câu: 3,0đ (75%)\n + Ghép đúng 6/7 câu: 3,2đ (80%)\n + Ghép đúng 7/7 câu: 4,0đ (100%)'
+                    explanation: 'Thứ tự chuẩn: b – e – h – g – c – a – d.'
                 }
             ],
 
@@ -581,7 +592,7 @@
                 {
                     id: 'MATH_1',
                     subject: 'TOÁN',
-                    section: 'PHẦN 1: TRẮC NGHIỆM CHỌN 1 ĐÁP ÁN ĐÚNG',
+                    section: 'PHẦN 1: TRẮC NGHIỆM',
                     question: 'Câu 1: Số lớn nhất có ba chữ số khác nhau là:',
                     type: 'MCQ',
                     points: 0.5,
@@ -592,12 +603,12 @@
                         { key: 'D', text: '897' }
                     ],
                     correctKey: 'B',
-                    explanation: 'Số có 3 chữ số khác nhau lớn nhất chọn từ các chữ số giảm dần từ lớn nhất: 9, 8, 7 → 987.'
+                    explanation: '987'
                 },
                 {
                     id: 'MATH_2',
                     subject: 'TOÁN',
-                    section: 'PHẦN 1: TRẮC NGHIỆM CHỌN 1 ĐÁP ÁN ĐÚNG',
+                    section: 'PHẦN 1: TRẮC NGHIỆM',
                     question: 'Câu 2: Kết quả của phép tính \\(725 - 368\\) là:',
                     type: 'MCQ',
                     points: 0.5,
@@ -608,12 +619,12 @@
                         { key: 'D', text: '359' }
                     ],
                     correctKey: 'A',
-                    explanation: '725 - 368 = 357.'
+                    explanation: '357'
                 },
                 {
                     id: 'MATH_3',
                     subject: 'TOÁN',
-                    section: 'PHẦN 1: TRẮC NGHIỆM CHỌN 1 ĐÁP ÁN ĐÚNG',
+                    section: 'PHẦN 1: TRẮC NGHIỆM',
                     question: 'Câu 3: Tìm \\(x\\), biết: \\(x : 7 = 8\\).',
                     type: 'MCQ',
                     points: 0.5,
@@ -624,12 +635,12 @@
                         { key: 'D', text: '51' }
                     ],
                     correctKey: 'A',
-                    explanation: 'x = 8 \\times 7 = 56.'
+                    explanation: '56'
                 },
                 {
                     id: 'MATH_4',
                     subject: 'TOÁN',
-                    section: 'PHẦN 1: TRẮC NGHIỆM CHỌN 1 ĐÁP ÁN ĐÚNG',
+                    section: 'PHẦN 1: TRẮC NGHIỆM',
                     question: 'Câu 4: Biết \\(8 \\times y = 72\\) và \\(54 : z = 9\\). Giá trị của biểu thức \\(y + z\\) là:',
                     type: 'MCQ',
                     points: 0.5,
@@ -640,12 +651,12 @@
                         { key: 'D', text: '18' }
                     ],
                     correctKey: 'A',
-                    explanation: 'y = 72 : 8 = 9; z = 54 : 9 = 6. Vậy y + z = 9 + 6 = 15.'
+                    explanation: '15'
                 },
                 {
                     id: 'MATH_5',
                     subject: 'TOÁN',
-                    section: 'PHẦN 1: TRẮC NGHIỆM CHỌN 1 ĐÁP ÁN ĐÚNG',
+                    section: 'PHẦN 1: TRẮC NGHIỆM',
                     question: 'Câu 5: Trang trại có 49 con bò. Số con cừu bằng \\(\\frac{1}{7}\\) số con bò. Hỏi trang trại có bao nhiêu con cừu?',
                     type: 'MCQ',
                     points: 0.5,
@@ -656,12 +667,12 @@
                         { key: 'D', text: '49 con' }
                     ],
                     correctKey: 'A',
-                    explanation: 'Số cừu = 49 : 7 = 7 (con).'
+                    explanation: '7 con'
                 },
                 {
                     id: 'MATH_6',
                     subject: 'TOÁN',
-                    section: 'PHẦN 1: TRẮC NGHIỆM CHỌN 1 ĐÁP ÁN ĐÚNG',
+                    section: 'PHẦN 1: TRẮC NGHIỆM',
                     question: 'Câu 6: Lớp 3A có 12 học sinh giỏi. Số học sinh khá gấp 3 lần số học sinh giỏi. Hỏi lớp 3A có tất cả bao nhiêu học sinh giỏi và khá?',
                     type: 'MCQ',
                     points: 0.5,
@@ -672,12 +683,12 @@
                         { key: 'D', text: '40 học sinh' }
                     ],
                     correctKey: 'C',
-                    explanation: 'Số HS khá = 12 \\times 3 = 36. Tổng số HS = 12 + 36 = 48 (học sinh).'
+                    explanation: '48 học sinh'
                 },
                 {
                     id: 'MATH_7',
                     subject: 'TOÁN',
-                    section: 'PHẦN 1: TRẮC NGHIỆM CHỌN 1 ĐÁP ÁN ĐÚNG',
+                    section: 'PHẦN 1: TRẮC NGHIỆM',
                     question: 'Câu 7: Cho đoạn thẳng \\(AB = 40\\text{ cm}\\). Gọi \\(M\\) là trung điểm của \\(AB\\), điểm \\(N\\) là trung điểm của \\(AM\\). Độ dài đoạn thẳng \\(MN\\) là:',
                     type: 'MCQ',
                     points: 0.5,
@@ -688,12 +699,12 @@
                         { key: 'D', text: '15 cm' }
                     ],
                     correctKey: 'B',
-                    explanation: 'AM = 40 : 2 = 20 cm; MN = 20 : 2 = 10 cm.'
+                    explanation: '10 cm'
                 },
                 {
                     id: 'MATH_8',
                     subject: 'TOÁN',
-                    section: 'PHẦN 1: TRẮC NGHIỆM CHỌN 1 ĐÁP ÁN ĐÚNG',
+                    section: 'PHẦN 1: TRẮC NGHIỆM',
                     question: 'Câu 8: Một hình tròn tâm \\(O\\) có đường kính \\(MN = 36\\text{ cm}\\). Độ dài bán kính \\(OM\\) của hình tròn đó là:',
                     type: 'MCQ',
                     points: 0.5,
@@ -704,12 +715,12 @@
                         { key: 'D', text: '9 cm' }
                     ],
                     correctKey: 'B',
-                    explanation: 'Bán kính = 36 : 2 = 18 cm.'
+                    explanation: '18 cm'
                 },
                 {
                     id: 'MATH_9',
                     subject: 'TOÁN',
-                    section: 'PHẦN 1: TRẮC NGHIỆM CHỌN 1 ĐÁP ÁN ĐÚNG',
+                    section: 'PHẦN 1: TRẮC NGHIỆM',
                     question: 'Câu 9: Cửa hàng có 45 kg gạo. Ngày thứ nhất bán được 9 kg. Ngày thứ hai bán được gấp 2 lần ngày thứ nhất. Hỏi sau hai ngày cửa hàng còn lại bao nhiêu kilôgam gạo?',
                     type: 'MCQ',
                     points: 0.5,
@@ -720,13 +731,13 @@
                         { key: 'D', text: '9 kg' }
                     ],
                     correctKey: 'C',
-                    explanation: 'Ngày 2 bán = 9 \\times 2 = 18 kg. Tổng bán = 9 + 18 = 27 kg. Còn lại = 45 - 27 = 18 kg.'
+                    explanation: '18 kg'
                 },
                 {
                     id: 'MATH_10',
                     subject: 'TOÁN',
-                    section: 'PHẦN 1: TRẮC NGHIỆM CHỌN 1 ĐÁP ÁN ĐÚNG',
-                    question: 'Câu 10: Cho một hình vuông có cạnh dài 16 cm. Người ta vẽ một hình tròn tâm O nằm bên trong hình vuông sao cho đường kính của hình tròn bằng đúng độ dài cạnh hình vuông. Độ dài bán kính của hình tròn đó là:',
+                    section: 'PHẦN 1: TRẮC NGHIỆM',
+                    question: 'Câu 10: Cho một hình vuông có cạnh dài 16 cm. Đường kính của hình tròn bên trong bằng đúng cạnh hình vuông. Bán kính hình tròn là:',
                     type: 'MCQ',
                     points: 0.5,
                     options: [
@@ -736,107 +747,107 @@
                         { key: 'D', text: '4 cm' }
                     ],
                     correctKey: 'C',
-                    explanation: 'Đường kính hình tròn = cạnh hình vuông = 16 cm. Bán kính = 16 : 2 = 8 cm.'
+                    explanation: '8 cm'
                 },
                 {
                     id: 'MATH_11',
                     subject: 'TOÁN',
-                    section: 'PHẦN 2: TRẮC NGHIỆM ĐÚNG / SAI',
+                    section: 'PHẦN 2: ĐÚNG / SAI',
                     question: 'Câu 11: Trong phép chia hết, muốn tìm số bị chia ta lấy thương nhân với số chia.',
                     type: 'TRUE_FALSE',
                     points: 0.5,
                     correctValue: 'Đúng',
-                    explanation: 'Khẳng định Đúng theo quy tắc tìm số bị chia chưa biết trong phép chia hết.'
+                    explanation: 'Đúng'
                 },
                 {
                     id: 'MATH_12',
                     subject: 'TOÁN',
-                    section: 'PHẦN 2: TRẮC NGHIỆM ĐÚNG / SAI',
+                    section: 'PHẦN 2: ĐÚNG / SAI',
                     question: 'Câu 12: Số 604 đọc là "Sáu trăm linh tư".',
                     type: 'TRUE_FALSE',
                     points: 0.5,
                     correctValue: 'Đúng',
-                    explanation: 'Đúng. Đây là cách đọc chuẩn cho số 604.'
+                    explanation: 'Đúng'
                 },
                 {
                     id: 'MATH_13',
                     subject: 'TOÁN',
-                    section: 'PHẦN 2: TRẮC NGHIỆM ĐÚNG / SAI',
+                    section: 'PHẦN 2: ĐÚNG / SAI',
                     question: 'Câu 13: Trong một hình tròn, độ dài bán kính luôn bằng một nửa độ dài đường kính.',
                     type: 'TRUE_FALSE',
                     points: 0.5,
                     correctValue: 'Đúng',
-                    explanation: 'Đúng. Tính chất hình tròn: r = d : 2.'
+                    explanation: 'Đúng'
                 },
                 {
                     id: 'MATH_14',
                     subject: 'TOÁN',
-                    section: 'PHẦN 2: TRẮC NGHIỆM ĐÚNG / SAI',
+                    section: 'PHẦN 2: ĐÚNG / SAI',
                     question: 'Câu 14: \\(\\frac{1}{5}\\) của \\(45\\text{ kg}\\) nhiều hơn \\(\\frac{1}{4}\\) của \\(32\\text{ kg}\\).',
                     type: 'TRUE_FALSE',
                     points: 0.5,
                     correctValue: 'Đúng',
-                    explanation: '\\(\\frac{1}{5}\\) của 45 kg = 9 kg; \\(\\frac{1}{4}\\) của 32 kg = 8 kg. Vì 9 kg > 8 kg nên khẳng định trên là Đúng.'
+                    explanation: 'Đúng'
                 },
                 {
                     id: 'MATH_15',
                     subject: 'TOÁN',
-                    section: 'PHẦN 3: ĐIỀN SỐ THÍCH HỢP (Chỉ điền số nguyên)',
-                    question: 'Câu 15: Tìm một số, biết rằng lấy 650 trừ đi số đó thì được kết quả là 280. Số đó là:',
+                    section: 'PHẦN 3: ĐIỀN SỐ',
+                    question: 'Câu 15: Lấy 650 trừ đi một số thì được 280. Số đó là:',
                     type: 'NUMBER_INPUT',
                     points: 0.5,
                     correctNumber: 370,
-                    explanation: '650 - x = 280 ⇒ x = 650 - 280 = 370.'
+                    explanation: '370'
                 },
                 {
                     id: 'MATH_16',
                     subject: 'TOÁN',
-                    section: 'PHẦN 3: ĐIỀN SỐ THÍCH HỢP (Chỉ điền số nguyên)',
+                    section: 'PHẦN 3: ĐIỀN SỐ',
                     question: 'Câu 16: Kết quả của biểu thức \\(56 : 7 + 42\\) là:',
                     type: 'NUMBER_INPUT',
                     points: 0.5,
                     correctNumber: 50,
-                    explanation: '56 : 7 = 8 → 8 + 42 = 50.'
+                    explanation: '50'
                 },
                 {
                     id: 'MATH_17',
                     subject: 'TOÁN',
-                    section: 'PHẦN 3: ĐIỀN SỐ THÍCH HỢP (Chỉ điền số nguyên)',
-                    question: 'Câu 17: Tìm số bị chia trong một phép chia hết cho 8, biết thương của phép chia đó bằng 9. Số bị chia là:',
+                    section: 'PHẦN 3: ĐIỀN SỐ',
+                    question: 'Câu 17: Tìm số bị chia trong phép chia hết cho 8, biết thương bằng 9.',
                     type: 'NUMBER_INPUT',
                     points: 0.5,
                     correctNumber: 72,
-                    explanation: '8 \\times 9 = 72.'
+                    explanation: '72'
                 },
                 {
                     id: 'MATH_18',
                     subject: 'TOÁN',
-                    section: 'PHẦN 3: ĐIỀN SỐ THÍCH HỢP (Chỉ điền số nguyên)',
-                    question: 'Câu 18: Cho 3 điểm thẳng hàng \\(X, Y, Z\\) theo thứ tự đó. Biết \\(XY = 18\\text{ cm}\\) và \\(XZ = 42\\text{ cm}\\). Độ dài đoạn thẳng \\(YZ\\) là (cm):',
+                    section: 'PHẦN 3: ĐIỀN SỐ',
+                    question: 'Câu 18: Cho 3 điểm thẳng hàng X, Y, Z. Biết XY = 18 cm và XZ = 42 cm. YZ bằng (cm):',
                     type: 'NUMBER_INPUT',
                     points: 0.5,
                     correctNumber: 24,
-                    explanation: 'YZ = XZ - XY = 42 - 18 = 24 cm.'
+                    explanation: '24'
                 },
                 {
                     id: 'MATH_19',
                     subject: 'TOÁN',
-                    section: 'PHẦN 3: ĐIỀN SỐ THÍCH HỢP (Chỉ điền số nguyên)',
-                    question: 'Câu 19: Khung bức tranh hình tròn có đường kính \\(20\\text{ cm}\\). Bán kính của bức tranh đó là (cm):',
+                    section: 'PHẦN 3: ĐIỀN SỐ',
+                    question: 'Câu 19: Khung bức tranh hình tròn có đường kính 20 cm. Bán kính là (cm):',
                     type: 'NUMBER_INPUT',
                     points: 0.5,
                     correctNumber: 10,
-                    explanation: 'r = 20 : 2 = 10 cm.'
+                    explanation: '10'
                 },
                 {
                     id: 'MATH_20',
                     subject: 'TOÁN',
-                    section: 'PHẦN 3: ĐIỀN SỐ THÍCH HỢP (Chỉ điền số nguyên)',
-                    question: 'Câu 20: Học sinh lớp 3B xếp thành 8 hàng, mỗi hàng có 4 bạn. Nếu xếp số học sinh đó thành 4 hàng đều nhau thì mỗi hàng có bao nhiêu bạn?',
+                    section: 'PHẦN 3: ĐIỀN SỐ',
+                    question: 'Câu 20: Học sinh lớp 3B xếp thành 8 hàng, mỗi hàng 4 bạn. Nếu xếp thành 4 hàng đều nhau thì mỗi hàng có bao nhiêu bạn?',
                     type: 'NUMBER_INPUT',
                     points: 0.5,
                     correctNumber: 8,
-                    explanation: 'Tổng học sinh = 8 \\times 4 = 32 bạn. Mỗi hàng mới có = 32 : 4 = 8 bạn.'
+                    explanation: '8'
                 }
             ],
 
@@ -844,7 +855,7 @@
                 {
                     id: 'ENG_1',
                     subject: 'TIẾNG ANH',
-                    section: 'PHẦN I: TRẮC NGHIỆM (MULTIPLE CHOICE)',
+                    section: 'PHẦN I: TRẮC NGHIỆM',
                     question: "Câu 1: Hi, I'm Linh. How __________ you? - Fine, thank you.",
                     type: 'MCQ',
                     points: 0.25,
@@ -855,12 +866,12 @@
                         { key: 'D', text: 'do' }
                     ],
                     correctKey: 'C',
-                    explanation: 'Cách hỏi thăm sức khỏe: "How are you?"'
+                    explanation: 'are'
                 },
                 {
                     id: 'ENG_2',
                     subject: 'TIẾNG ANH',
-                    section: 'PHẦN I: TRẮC NGHIỆM (MULTIPLE CHOICE)',
+                    section: 'PHẦN I: TRẮC NGHIỆM',
                     question: "Câu 2: What's __________ name? - My name's Mary.",
                     type: 'MCQ',
                     points: 0.25,
@@ -871,12 +882,12 @@
                         { key: 'D', text: 'it' }
                     ],
                     correctKey: 'B',
-                    explanation: 'Hỏi tên người đối diện: "What\'s your name?"'
+                    explanation: 'your'
                 },
                 {
                     id: 'ENG_3',
                     subject: 'TIẾNG ANH',
-                    section: 'PHẦN I: TRẮC NGHIỆM (MULTIPLE CHOICE)',
+                    section: 'PHẦN I: TRẮC NGHIỆM',
                     question: "Câu 3: How old are you? - I'm __________ years old.",
                     type: 'MCQ',
                     points: 0.25,
@@ -887,12 +898,12 @@
                         { key: 'D', text: 'an' }
                     ],
                     correctKey: 'A',
-                    explanation: 'Dùng số đếm "eight" để trả lời về tuổi: "eight years old".'
+                    explanation: 'eight'
                 },
                 {
                     id: 'ENG_4',
                     subject: 'TIẾNG ANH',
-                    section: 'PHẦN I: TRẮC NGHIỆM (MULTIPLE CHOICE)',
+                    section: 'PHẦN I: TRẮC NGHIỆM',
                     question: "Câu 4: Is that Mr Long? - No, it __________. It's Mr Loc.",
                     type: 'MCQ',
                     points: 0.25,
@@ -903,12 +914,12 @@
                         { key: 'D', text: 'aren\'t' }
                     ],
                     correctKey: 'B',
-                    explanation: 'Câu trả lời phủ định: "No, it isn\'t."'
+                    explanation: 'isn\'t'
                 },
                 {
                     id: 'ENG_5',
                     subject: 'TIẾNG ANH',
-                    section: 'PHẦN I: TRẮC NGHIỆM (MULTIPLE CHOICE)',
+                    section: 'PHẦN I: TRẮC NGHIỆM',
                     question: "Câu 5: What's this? - It's __________ ear.",
                     type: 'MCQ',
                     points: 0.25,
@@ -919,12 +930,12 @@
                         { key: 'D', text: 'my a' }
                     ],
                     correctKey: 'B',
-                    explanation: 'Từ "ear" bắt đầu bằng nguyên âm "e" nên dùng mạo từ "an".'
+                    explanation: 'an'
                 },
                 {
                     id: 'ENG_6',
                     subject: 'TIẾNG ANH',
-                    section: 'PHẦN I: TRẮC NGHIỆM (MULTIPLE CHOICE)',
+                    section: 'PHẦN I: TRẮC NGHIỆM',
                     question: "Câu 6: __________ your mouth, please!",
                     type: 'MCQ',
                     points: 0.25,
@@ -935,12 +946,12 @@
                         { key: 'D', text: 'Cả B và C đều đúng' }
                     ],
                     correctKey: 'D',
-                    explanation: 'Cả "Open your mouth" (Mở miệng) và "Close your mouth" (Đóng miệng) đều đúng ngữ pháp.'
+                    explanation: 'Cả B và C đều đúng'
                 },
                 {
                     id: 'ENG_7',
                     subject: 'TIẾNG ANH',
-                    section: 'PHẦN I: TRẮC NGHIỆM (MULTIPLE CHOICE)',
+                    section: 'PHẦN I: TRẮC NGHIỆM',
                     question: "Câu 7: This __________ my friend, Ben.",
                     type: 'MCQ',
                     points: 0.25,
@@ -951,12 +962,12 @@
                         { key: 'D', text: 'it\'s' }
                     ],
                     correctKey: 'A',
-                    explanation: 'Cấu trúc giới thiệu: "This is my friend..."'
+                    explanation: 'is'
                 },
                 {
                     id: 'ENG_8',
                     subject: 'TIẾNG ANH',
-                    section: 'PHẦN I: TRẮC NGHIỆM (MULTIPLE CHOICE)',
+                    section: 'PHẦN I: TRẮC NGHIỆM',
                     question: "Câu 8: __________ is that? - It's a hand.",
                     type: 'MCQ',
                     points: 0.25,
@@ -967,12 +978,12 @@
                         { key: 'D', text: 'Is' }
                     ],
                     correctKey: 'B',
-                    explanation: 'Hỏi đồ vật/bộ phận cơ thể dùng "What": "What is that?"'
+                    explanation: 'What'
                 },
                 {
                     id: 'ENG_9',
                     subject: 'TIẾNG ANH',
-                    section: 'PHẦN I: TRẮC NGHIỆM (MULTIPLE CHOICE)',
+                    section: 'PHẦN I: TRẮC NGHIỆM',
                     question: "Câu 9: Is this Mai? - __________, it is.",
                     type: 'MCQ',
                     points: 0.25,
@@ -983,13 +994,13 @@
                         { key: 'D', text: 'Fine' }
                     ],
                     correctKey: 'C',
-                    explanation: 'Trả lời khẳng định: "Yes, it is."'
+                    explanation: 'Yes'
                 },
                 {
                     id: 'ENG_10',
                     subject: 'TIẾNG ANH',
-                    section: 'PHẦN I: TRẮC NGHIỆM (MULTIPLE CHOICE)',
-                    question: "Câu 10: Điền mạo từ đúng vào chỗ trống: \"It's _____ face and _____ eye.\"",
+                    section: 'PHẦN I: TRẮC NGHIỆM',
+                    question: "Câu 10: Điền mạo từ đúng: \"It's _____ face and _____ eye.\"",
                     type: 'MCQ',
                     points: 0.25,
                     options: [
@@ -999,145 +1010,113 @@
                         { key: 'D', text: 'an / an' }
                     ],
                     correctKey: 'C',
-                    explanation: 'face bắt đầu bằng phụ âm \'f\' -> a face; eye bắt đầu bằng nguyên âm \'e\' -> an eye.'
+                    explanation: 'a / an'
                 },
                 {
                     id: 'ENG_11_15',
                     subject: 'TIẾNG ANH',
-                    section: 'PHẦN II: ĐIỀN SỐ VÀ LÀM TOÁN TIẾNG ANH (NUMBERS & MATH)',
-                    question: 'Đọc các phép tính hoặc câu đố bằng tiếng Anh và viết đáp án bằng CHỮ (Words):',
+                    section: 'PHẦN II: SỐ VÀ TOÁN',
+                    question: 'Viết đáp án bằng CHỮ (Words):',
                     type: 'TEXT_INPUT_MULTI',
                     points: 1.5,
                     subQuestions: [
                         { id: 'ENG_11', label: '11. two + six =', correct: 'eight' },
                         { id: 'ENG_12', label: '12. ten - three =', correct: 'seven' },
                         { id: 'ENG_13', label: '13. four + five =', correct: 'nine' },
-                        { id: 'ENG_14', label: '14. How old is Nam? (Nam sinh năm 2017, năm nay là 2026) -> He is _____ years old.', correct: 'nine' },
-                        { id: 'ENG_15', label: '15. I have one nose, two eyes, and two ears. Total parts = _____ parts.', correct: 'five' }
+                        { id: 'ENG_14', label: '14. Nam sinh năm 2017, năm 2026 -> He is _____ years old.', correct: 'nine' },
+                        { id: 'ENG_15', label: '15. One nose, two eyes, two ears = _____ parts.', correct: 'five' }
                     ],
-                    explanation: '11. 2 + 6 = 8 (eight)\n12. 10 - 3 = 7 (seven)\n13. 4 + 5 = 9 (nine)\n14. 2026 - 2017 = 9 (nine)\n15. 1 + 2 + 2 = 5 (five)'
+                    explanation: 'eight, seven, nine, nine, five'
                 },
                 {
                     id: 'ENG_16_20',
                     subject: 'TIẾNG ANH',
-                    section: 'PHẦN III: NỐI CÂU HỎI VỚI CÂU TRẢ LỜI (MATCHING)',
-                    question: 'Nối câu ở Cột A với phản xạ đáp lại phù hợp ở Cột B:',
+                    section: 'PHẦN III: NỐI CÂU',
+                    question: 'Nối Cột A với Cột B:',
                     type: 'MATCHING_SELECT',
                     points: 1.5,
                     pairs: [
-                        { id: 'ENG_16', textA: '16. Good night / Goodbye, class!', correct: 'b', textB: 'b. Goodbye, teacher!' },
-                        { id: 'ENG_17', textA: '17. Is that Ms Hoa?', correct: 'c', textB: 'c. No, it isn\'t. It\'s Ms Hien.' },
-                        { id: 'ENG_18', textA: '18. How old are you, Lucy?', correct: 'e', textB: 'e. I\'m nine years old.' },
+                        { id: 'ENG_16', textA: '16. Goodbye, class!', correct: 'b', textB: 'b. Goodbye, teacher!' },
+                        { id: 'ENG_17', textA: '17. Is that Ms Hoa?', correct: 'c', textB: 'c. No, it isn\'t.' },
+                        { id: 'ENG_18', textA: '18. How old are you?', correct: 'e', textB: 'e. I\'m nine years old.' },
                         { id: 'ENG_19', textA: '19. What\'s that?', correct: 'a', textB: 'a. It\'s an eye.' },
                         { id: 'ENG_20', textA: '20. Open your eyes!', correct: 'd', textB: 'd. Touch your hair!' }
                     ],
-                    explanation: '16 - b; 17 - c; 18 - e; 19 - a; 20 - d'
+                    explanation: '16-b, 17-c, 18-e, 19-a, 20-d'
                 },
                 {
                     id: 'ENG_21_25',
                     subject: 'TIẾNG ANH',
-                    section: 'PHẦN IV: ĐIỀN TỪ HOÀN THÀNH HỘI THOẠI (COMPLETE THE DIALOGUE)',
-                    question: 'Chọn các từ trong khung điền vào chỗ trống thích hợp: <b>[ an / name / friend / Touch / old ]</b><br><br>' +
-                              'Minh: Hi! My (21) ____ is Minh. What\'s your name?<br>' +
-                              'Peter: Hello, Minh. I\'m Peter. This is my (22) ____, Mary.<br>' +
-                              'Minh: Hi, Mary. How (23) ____ are you?<br>' +
-                              'Mary: I\'m seven years old. What\'s this, Minh?<br>' +
-                              'Minh: It\'s (24) ____ ear.<br>' +
-                              'Mary: (25) ____ your ear, please!<br>' +
-                              'Minh: OK.',
+                    section: 'PHẦN IV: HỘI THOẠI',
+                    question: 'Điền từ: <b>[ an / name / friend / Touch / old ]</b>',
                     type: 'DIALOGUE_SELECT',
                     points: 1.5,
                     optionsList: ['an', 'name', 'friend', 'Touch', 'old'],
                     subQuestions: [
-                        { id: 'ENG_21', label: 'Chỗ trống (21):', correct: 'name' },
-                        { id: 'ENG_22', label: 'Chỗ trống (22):', correct: 'friend' },
-                        { id: 'ENG_23', label: 'Chỗ trống (23):', correct: 'old' },
-                        { id: 'ENG_24', label: 'Chỗ trống (24):', correct: 'an' },
-                        { id: 'ENG_25', label: 'Chỗ trống (25):', correct: 'Touch' }
+                        { id: 'ENG_21', label: '21:', correct: 'name' },
+                        { id: 'ENG_22', label: '22:', correct: 'friend' },
+                        { id: 'ENG_23', label: '23:', correct: 'old' },
+                        { id: 'ENG_24', label: '24:', correct: 'an' },
+                        { id: 'ENG_25', label: '25:', correct: 'Touch' }
                     ],
-                    explanation: '(21) name ; (22) friend ; (23) old ; (24) an ; (25) Touch'
+                    explanation: 'name, friend, old, an, Touch'
                 },
                 {
                     id: 'ENG_26_30',
                     subject: 'TIẾNG ANH',
-                    section: 'PHẦN V: TÌM VÀ SỬA LỖI SAI (ERROR CORRECTION)',
-                    question: 'Mỗi câu dưới đây có một lỗi sai. Chọn từ sai và từ sửa đúng tương ứng:',
+                    section: 'PHẦN V: LỖI SAI',
+                    question: 'Chọn cách sửa lỗi sai tương ứng:',
                     type: 'ERROR_CORRECTION_SELECT',
                     points: 1.5,
                     items: [
-                        { id: 'ENG_26', text: '26. It\'s a eye.', options: ['a -> an', 'eye -> eyes', 'It\'s -> They\'re'], correct: 'a -> an' },
-                        { id: 'ENG_27', text: '27. Is that Ben? - No, it is.', options: ['that -> this', 'is -> isn\'t', 'No -> Yes'], correct: 'is -> isn\'t' },
-                        { id: 'ENG_28', text: '28. How old you are? - I\'m eight years old.', options: ['you are -> are you', 'old -> age', 'eight -> eighth'], correct: 'you are -> are you' },
-                        { id: 'ENG_29', text: '29. What this? - It\'s a hand.', options: ['What -> What\'s', 'this -> that', 'a -> an'], correct: 'What -> What\'s' },
-                        { id: 'ENG_30', text: '30. Touch you face, please!', options: ['Touch -> Open', 'you -> your', 'face -> faces'], correct: 'you -> your' }
+                        { id: 'ENG_26', text: '26. It\'s a eye.', options: ['a -> an', 'eye -> eyes'], correct: 'a -> an' },
+                        { id: 'ENG_27', text: '27. Is that Ben? - No, it is.', options: ['is -> isn\'t', 'No -> Yes'], correct: 'is -> isn\'t' },
+                        { id: 'ENG_28', text: '28. How old you are?', options: ['you are -> are you', 'old -> age'], correct: 'you are -> are you' },
+                        { id: 'ENG_29', text: '29. What this?', options: ['What -> What\'s', 'this -> that'], correct: 'What -> What\'s' },
+                        { id: 'ENG_30', text: '30. Touch you face!', options: ['Touch -> Open', 'you -> your'], correct: 'you -> your' }
                     ],
-                    explanation: '26. a -> an\n27. is -> isn\'t\n28. you are -> are you\n29. What -> What\'s\n30. you -> your'
+                    explanation: '26. a->an, 27. is->isn\'t, 28. you are->are you, 29. What->What\'s, 30. you->your'
                 },
                 {
                     id: 'ENG_31_35',
                     subject: 'TIẾNG ANH',
-                    section: 'PHẦN VI: SẮP XẾP TỪ THÀNH CÂU HOÀN CHỈNH (REORDER THE WORDS)',
-                    question: 'Chọn câu sắp xếp chính xác nhất cho các từ bị xáo trộn:',
+                    section: 'PHẦN VI: SẮP XẾP CÂU',
+                    question: 'Chọn câu sắp xếp chính xác:',
                     type: 'MCQ_MULTI',
                     points: 1.5,
                     items: [
                         {
                             id: 'ENG_31',
                             prompt: '31. is / This / my / teacher, / Long. / Mr',
-                            options: [
-                                'This is my teacher, Mr Long.',
-                                'This my teacher is Mr Long.',
-                                'Mr Long is teacher my This.',
-                                'Teacher is my Mr Long This.'
-                            ],
+                            options: ['This is my teacher, Mr Long.', 'This my teacher is Mr Long.'],
                             correct: 'This is my teacher, Mr Long.'
                         },
                         {
                             id: 'ENG_32',
                             prompt: '32. your / mouth! / Open',
-                            options: [
-                                'Open your mouth!',
-                                'Your open mouth!',
-                                'Mouth open your!',
-                                'Open mouth your!'
-                            ],
+                            options: ['Open your mouth!', 'Your open mouth!'],
                             correct: 'Open your mouth!'
                         },
                         {
                             id: 'ENG_33',
                             prompt: '33. old / sister? / How / is / your',
-                            options: [
-                                'How old is your sister?',
-                                'How is your sister old?',
-                                'Your sister is how old?',
-                                'Old how is your sister?'
-                            ],
+                            options: ['How old is your sister?', 'How is your sister old?'],
                             correct: 'How old is your sister?'
                         },
                         {
                             id: 'ENG_34',
                             prompt: '34. that / Is / Bill? / - / isn\'t. / No, / it',
-                            options: [
-                                'Is that Bill? - No, it isn\'t.',
-                                'That is Bill? - No, it isn\'t.',
-                                'Is Bill that? - No, isn\'t it.',
-                                'Is that Bill? - No, isn\'t it.'
-                            ],
+                            options: ['Is that Bill? - No, it isn\'t.', 'That is Bill? - No, it isn\'t.'],
                             correct: 'Is that Bill? - No, it isn\'t.'
                         },
                         {
                             id: 'ENG_35',
                             prompt: '35. name\'s / Hello, / Ben. / my / What\'s / name? / your',
-                            options: [
-                                'Hello, my name\'s Ben. What\'s your name?',
-                                'Hello, What\'s your name? my name\'s Ben.',
-                                'My name\'s Ben Hello, What\'s your name?',
-                                'Hello, my Ben name\'s. What\'s your name?'
-                            ],
+                            options: ['Hello, my name\'s Ben. What\'s your name?', 'Hello, What\'s your name? my name\'s Ben.'],
                             correct: 'Hello, my name\'s Ben. What\'s your name?'
                         }
                     ],
-                    explanation: '31. This is my teacher, Mr Long.\n32. Open your mouth!\n33. How old is your sister?\n34. Is that Bill? - No, it isn\'t.\n35. Hello, my name\'s Ben. What\'s your name?'
+                    explanation: 'Đáp án chuẩn.'
                 }
             ]
         };
@@ -1184,21 +1163,24 @@
             document.getElementById('custom-modal').classList.add('hidden');
         }
 
-        // MODE SELECTION LOGIC
+        // HÀM KIỂM TRA THỜI GIAN CHÍNH XÁC (Đã sửa logic để mở khi đã qua thời gian hẹn)
         function selectMode(mode) {
             const config = EXAM_OPEN_CONFIG[mode];
-            
-            if (!config || !config.isOpen) {
+            const now = new Date(); // Thời gian thực của máy tính
+
+            // Nếu chưa tới giờ mở đề
+            if (config && now.getTime() < config.openTime.getTime()) {
                 const subjectNames = {
                     'TV': 'TIẾNG VIỆT',
                     'TOAN': 'TOÁN HỌC',
                     'TA': 'TIẾNG ANH',
                     'ALL': 'TỔNG HỢP 3 MÔN'
                 };
-                showModal("THÔNG BÁO MỞ ĐỀ", `CHƯA ĐẾN THỜI GIAN MỞ ĐỀ CỦA BÀI THI <b>${subjectNames[mode]}</b>.<br><span class="text-xs text-blue-300 mt-2 block">Thời gian mở đề dự kiến: ${config.timeString}</span>`);
+                showModal("THÔNG BÁO MỞ ĐỀ", `CHƯA ĐẾN THỜI GIAN MỞ ĐỀ CỦA BÀI THI <b>${subjectNames[mode]}</b>.<br><span class="text-xs text-blue-300 mt-2 block">Thời gian mở đề chính thức: ${config.timeString}</span>`);
                 return;
             }
 
+            // Nếu đã đến hoặc qua giờ mở đề -> Cho phép vào thi
             selectedMode = mode;
 
             document.querySelectorAll('.mode-card').forEach(card => {
@@ -1558,7 +1540,7 @@
                         qHTML += `<div class="bg-navy-900/60 p-4 rounded-xl border border-navy-700 space-y-2">
                             <p class="text-sm font-semibold text-gold-400">${item.prompt}</p>
                             <div class="space-y-1.5">
-                                ${item.options.map((optStr, idx) => `
+                                ${item.options.map((optStr) => `
                                     <label class="flex items-center gap-2 cursor-pointer text-xs md:text-sm text-blue-100 p-2 rounded hover:bg-navy-800">
                                         <input type="radio" name="${item.id}" value="${optStr}" class="accent-gold-400"> ${optStr}
                                     </label>
